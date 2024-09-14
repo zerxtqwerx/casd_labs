@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,36 +13,41 @@ using System.Threading.Tasks;
 матрица тензора и вектор вводятся из файла. Память выделяется динамически; проверка
 на то, что матрица симметрична – необходима. Результат выводится на экран.*/
 
-namespace KASD_1
+namespace CASD_1
 {
     internal class Program
     {
-        static int n; static double[] x;
-        static double[,] g;
+        static StreamReader streamReader;
+        
+        static int n = 0;   //мерность пространства
+        static double[] x;  //вектор
+        static double[,] g; //матрица тензора
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите мерность пространства: ");
-            n = Convert.ToInt32(Console.ReadLine());
-            x = new double[n]; g = new double[n, n];
-
-
-            Console.WriteLine("Введите вектор Х: ");
-            for (int i = 0; i < n; i++)
+            try
             {
-                x[i] = Convert.ToDouble(Console.ReadLine());
+                streamReader = new StreamReader("C:\\Sample.txt");
+            }
+            catch 
+            { 
+                Console.WriteLine("Файла не существует");
+                Console.ReadLine();
             }
 
-            Console.WriteLine("Введите матрицу G: ");
-            MatrixInput(g);
-            while (!IsSymmetric(g))
+            string[] Lines = File.ReadAllLines("C:\\Sample.txt");
+            x = Array.ConvertAll(Lines[0].Split(' '), double.Parse);
+            n = x.Length;
+
+            g = new double[n, n];
+            MatrixInput(g, Lines);
+            if (!IsSymmetric(g))
             {
                 Console.WriteLine("Матрица нессиметрична. Повторите ввод: ");
-                MatrixInput(g);
-
             }
-            
-            //multiplication x * g = vector
+            streamReader.Close();
+
+            //x * g = vector
             double[] vector = new double[n]; 
             for (int i = 0; i < n; i++)
             {
@@ -51,30 +57,30 @@ namespace KASD_1
                 }
             }
 
-            //multiplication vec * x^T = answer
+            //vec * x^T = answer
             double answer = 0;
             for (int i = 0; i < n; i++)
             {
                 answer += x[i] * vector[i];
             }
 
-            Console.WriteLine($"Длина вектора Ъ в N-мерном пространстве = {answer}");
+            Console.WriteLine($"Длина вектора X в {n}-мерном пространстве = {answer}");
             Console.Read();
         }
 
-        //function of input matrix from console
-        static void MatrixInput(double[,] matr)
+        static void MatrixInput(double[,] matr, string[] s)
         {
             for (int i = 0; i < n; i++)
             {
+                string[] row = s[i + 2].Split(' ');
                 for (int j = 0; j < n; j++)
                 {
-                    g[i, j] = Convert.ToDouble(Console.ReadLine());
+                    matr[i, j] = double.Parse(row[j]);
                 }
+                
             }
         }
 
-        //function of checking matrix for symmetry
         static bool IsSymmetric(double[,] matr)
         {
             for (int i = 0; i < n; i++)
