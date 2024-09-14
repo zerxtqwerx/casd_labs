@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sort
+namespace sorting
 {
     public class SortingAlgorithms
     {
+
         public static void BubbleSort(int[] array)
         {
             int temp;
@@ -283,17 +284,19 @@ namespace Sort
             }
         }
 
-        public static void QuickSort(Tuple<int[], int, int> param)
+        public static void QuickSort(int[] array, int left, int right)
         {
-            int[] array = param.Item1;
-            int left = param.Item2;
-            int right = param.Item3;
             if (left < right)
             {
                 int pivotIndex = Partition(array, left, right);
-                QuickSort(Tuple.Create(array, left, pivotIndex - 1));
-                QuickSort(Tuple.Create(array, pivotIndex + 1, right));
+                QuickSort(array, left, pivotIndex - 1);
+                QuickSort(array, pivotIndex + 1, right);
             }
+        }
+
+        public static void QuickSort(int[] array)
+        {
+            QuickSort(array, 0, array.Length - 1);
         }
 
         static int Partition(int[] array, int left, int right)
@@ -361,18 +364,20 @@ namespace Sort
             }
         }
 
-        public static void MergeSort(Tuple<int[], int, int> param)
+        public static void MergeSort(int[] array, int l, int r)
         {
-            int[] array = param.Item1;
-            int l = param.Item2;
-            int r = param.Item3;
             if (l < r)
             {
                 int m = l + (r - l) / 2;
-                MergeSort(Tuple.Create(array, l, m));
-                MergeSort(Tuple.Create(array, m + 1, r));
+                MergeSort(array, l, m);
+                MergeSort(array, m + 1, r);
                 Merge(array, l, m, r);
             }
+        }
+
+        public static void MergeSort(int[] array)
+        {
+            MergeSort(array, 0, array.Length - 1);
         }
 
         public static void CountingSort(int[] array)
@@ -425,10 +430,8 @@ namespace Sort
             }
         }
 
-        public static void BucketSort(Tuple<int[], int> param)
+        public static void BucketSort(int[] array, int bucketCount)
         {
-            int[] array = param.Item1;
-            int bucketCount = param.Item2;
             if (array.Length <= 1)
             {
                 return;
@@ -473,6 +476,10 @@ namespace Sort
             }
         }
 
+        public static void BucketSort(int[] array)
+        {
+            BucketSort(array, array.Length + 1);
+        }
         public static void RadiaxSort(int[] arr)
         {
             int i, j;
