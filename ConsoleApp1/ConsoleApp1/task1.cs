@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 /*Описать метод, находящий длину 𝑥 вектора в 𝑁-мерном пространстве. Пространство
 задаётся матрицей метрического тензора 𝐺 (если интересно, то можно почитать, что это,
@@ -25,28 +26,27 @@ namespace CASD_1
 
         static void Main(string[] args)
         {
+
+            string[] Lines;
             try
             {
-                streamReader = new StreamReader("C:\\Sample.txt");
+                Lines = File.ReadAllLines("D:\\GitDesc\\casd_labs\\ConsoleApp1\\Sample.txt");
+                x = Array.ConvertAll(Lines[0].Split(' '), double.Parse);
+                n = x.Length;
+
+                g = new double[n, n];
+                MatrixInput(g, Lines);
+                if (!IsSymmetric(g))
+                {
+                    Console.WriteLine("Матрица нессиметрична. Повторите ввод: ");
+                }
+                
             }
             catch 
             { 
                 Console.WriteLine("Файла не существует");
                 Console.ReadLine();
             }
-
-            string[] Lines = File.ReadAllLines("C:\\Sample.txt");
-            x = Array.ConvertAll(Lines[0].Split(' '), double.Parse);
-            n = x.Length;
-
-            g = new double[n, n];
-            MatrixInput(g, Lines);
-            if (!IsSymmetric(g))
-            {
-                Console.WriteLine("Матрица нессиметрична. Повторите ввод: ");
-            }
-            streamReader.Close();
-
             //x * g = vector
             double[] vector = new double[n]; 
             for (int i = 0; i < n; i++)
