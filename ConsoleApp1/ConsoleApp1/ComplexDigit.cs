@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    //класс комплексных чисел
     internal class ComplexDigit
     {
         private double Real;

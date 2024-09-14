@@ -27,8 +27,10 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             int n = -1;
+            //menu
             while (n != 0)
             {
+                Console.OutputEncoding = Encoding.GetEncoding(1251);
                 n = -1;
                 Console.WriteLine("Выберите одну из предложенных команд по порядковому номеру: ");
                 Console.WriteLine("1. Сложение");

@@ -5,3 +5,10 @@ D:\GitDesc\casd_labs\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
 D:\GitDesc\casd_labs\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
 D:\GitDesc\casd_labs\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 D:\GitDesc\casd_labs\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\greoh\Documents\GitHub\casd_labs\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
