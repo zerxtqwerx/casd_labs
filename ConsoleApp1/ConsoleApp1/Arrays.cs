@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace TestData
 {
-    internal class Arrays
+    public class Arrays
     {
         //массив со случайными числами
         public static int[] RandNum(ref int size, int modulus = 1000)

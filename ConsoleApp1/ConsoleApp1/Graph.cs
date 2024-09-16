@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace ConsoleApp1
 {
-    internal class Program
+    public class Graph
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }
