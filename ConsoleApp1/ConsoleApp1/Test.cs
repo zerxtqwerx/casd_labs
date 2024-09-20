@@ -66,12 +66,13 @@ namespace Test
         };
 
         // производит тест на выбранной группе сортировок по выбранным тестовым данным
-        public static Dictionary<int, List<long>> StartTest(int size, List<GroupDelegate> sortAlgorithms, List<TestDataDelegate> testData, int modulus = 1000)
+        public static void StartTest(int size, List<GroupDelegate> sortAlgorithms, List<TestDataDelegate> testData,
+            out Dictionary<int, List<long>> dictionary, int modulus = 1000)
         {
-            Dictionary<int, List<long>> dictionary = new Dictionary<int, List<long>>();
-
+            dictionary = new Dictionary<int, List<long>>();
             List<long> timeList = new List<long>();
             int i = 0;
+
             foreach (GroupDelegate sort in sortAlgorithms)
             {
                 foreach (TestDataDelegate data in testData)
@@ -85,11 +86,13 @@ namespace Test
                     stopwatch.Stop();
                     timeList.Add(stopwatch.ElapsedMilliseconds);
                 }
-                dictionary.Add(i, timeList);
+                List<long> list = new List<long>();
+                dictionary.Add(i, list);
+                foreach (long time in timeList)
+                    dictionary[i].Add(time);
                 i++;
                 timeList.Clear();
             }
-            return dictionary;
         }
 
 
@@ -116,18 +119,18 @@ namespace Test
                 {
                     size = 10000;
                     matrix = new int[4][];
-                    ints = new long[4];
+                    ints = new long[5];
                     if (groupData == 1)
                     {
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, firstGroup, firstTestData);
+                            StartTest(size, firstGroup, firstTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -137,12 +140,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, firstGroup, secondTestData);
+                            StartTest(size, firstGroup, secondTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -152,12 +155,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, firstGroup, thirdTestData);
+                            StartTest(size, firstGroup, thirdTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -167,12 +170,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, firstGroup, secondTestData);
+                            StartTest(size, firstGroup, fourthTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 ints[j] /= 4;
                             }
                         }
@@ -188,12 +191,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, firstTestData);
+                            StartTest(size, secondGroup, firstTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -203,12 +206,11 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, secondTestData);
-
+                            StartTest(size, secondGroup, secondTestData, out dict);
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -218,12 +220,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, thirdTestData);
+                            StartTest(size, secondGroup, thirdTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -233,12 +235,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, secondTestData);
+                            StartTest(size, secondGroup, fourthTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 ints[j] /= 4;
                             }
                         }
@@ -254,12 +256,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, firstTestData);
+                            StartTest(size, thirdGroup, firstTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -269,12 +271,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, secondTestData);
+                            StartTest(size, thirdGroup, secondTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -284,12 +286,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, thirdTestData);
+                            StartTest(size, thirdGroup, thirdTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 //ints[j] /= 1;
                             }
                         }
@@ -299,12 +301,12 @@ namespace Test
                         for (int i = 10; i != size; i *= 10)
                         {
                             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            dict = StartTest(size, secondGroup, secondTestData);
+                            StartTest(size, thirdGroup, fourthTestData, out dict);
 
                             for (int j = 0; j != ints.Length; j++)
                             {
-                                for (int k = 0; k != dict.Count; k++)
-                                    ints[j] += dict[j][k];
+                                foreach (long k in dict.Keys)
+                                    ints[j] += k;
                                 ints[j] /= 4;
                             }
                         }
