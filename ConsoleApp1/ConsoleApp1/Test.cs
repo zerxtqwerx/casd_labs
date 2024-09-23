@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Data.SqlTypes;
+using System.Drawing;
 
 namespace Test
 {
@@ -87,7 +88,11 @@ namespace Test
                     timeList.Add(stopwatch.ElapsedMilliseconds);
                 }
                 List<long> list = new List<long>();
-                dictionary.Add(i, list);
+                if (dictionary.ContainsKey(i))
+                    dictionary[i] = list;                
+                else
+                    dictionary.Add(i, list);
+
                 foreach (long time in timeList)
                     dictionary[i].Add(time);
                 i++;
@@ -95,232 +100,82 @@ namespace Test
             }
         }
 
-
         //в функцию подают 2 числа: 1- номер группы сортировки и 2 - номер тестовых данных. 
-        public double[] Testing(int groupNumber, int groupData)
+        public double[][] Testing(int groupNumber, int groupData)
         {
-            double[] result = new double[0];
-            if (groupNumber == 1)
-                result = new double[5];
-            else if (groupNumber == 2)
-                result = new double[3];
-            else if (groupNumber == 3)
-                result = new double[7];
+            List<GroupDelegate> groupDelegate = null;
+            List<TestDataDelegate> testDataDelegate = null;
+            double[][] result = new double[0][];
+            int divisor = 1;
+            int size;
 
-            for (int count = 0; count < 20; count++)
+            switch (groupNumber)
             {
-                int[][] matrix = new int[0][];
-                GroupDelegate groupDelegate = null;
-                TestDataDelegate testData = null;
-                int size = 0;
-                long[] ints = new long[0];
-
-                if (groupNumber == 1)
-                {
+                case 1:
+                    result = new double[5][];
+                    groupDelegate = firstGroup;
                     size = 10000;
-                    matrix = new int[4][];
-                    ints = new long[5];
-                    if (groupData == 1)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, firstGroup, firstTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 2)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, firstGroup, secondTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 3)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, firstGroup, thirdTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 4)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, firstGroup, fourthTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                ints[j] /= 4;
-                            }
-                        }
-                    }
-                }
-                else if (groupNumber == 2)
-                {
+                    break;
+                case 2:
+                    result = new double[3][];
+                    groupDelegate = secondGroup;
                     size = 100000;
-                    matrix = new int[3][];
-                    ints = new long[3];
-                    if (groupData == 1)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, secondGroup, firstTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 2)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, secondGroup, secondTestData, out dict);
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 3)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, secondGroup, thirdTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 4)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, secondGroup, fourthTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                ints[j] /= 4;
-                            }
-                        }
-                    }
-                }
-                else if (groupNumber == 3)
-                {
+                    break;
+                case 3:
+                    result = new double[7][];
+                    groupDelegate = thirdGroup;
                     size = 1000000;
-                    matrix = new int[7][];
-                    ints = new long[7];
-                    if (groupData == 1)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, thirdGroup, firstTestData, out dict);
+                    break;
+                default:
+                    result = new double[5][];
+                    groupDelegate = firstGroup;
+                    size = 10000;
+                    break;
+            }
+            switch (groupData)
+            {
+                case 1:
+                    testDataDelegate = firstTestData;
+                    break;
+                case 2:
+                    testDataDelegate = secondTestData;
+                    break;
+                case 3:
+                    testDataDelegate = thirdTestData;
+                    break;
+                case 4:
+                    testDataDelegate = fourthTestData;
+                    break;
+                default:
+                    testDataDelegate = firstTestData;
+                    divisor = 4;
+                    break;
+            }
 
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 2)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, thirdGroup, secondTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 3)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, thirdGroup, thirdTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                //ints[j] /= 1;
-                            }
-                        }
-                    }
-                    else if (groupData == 4)
-                    {
-                        for (int i = 10; i != size; i *= 10)
-                        {
-                            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-                            StartTest(size, thirdGroup, fourthTestData, out dict);
-
-                            for (int j = 0; j != ints.Length; j++)
-                            {
-                                foreach (long k in dict.Keys)
-                                    ints[j] += k;
-                                ints[j] /= 4;
-                            }
-                        }
-                    }
-                }
-                
-                for(int c = 0; c < result.Length; c++)
+            Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
+            Parallel.For(0, 20, i =>
+            {
+                StartTest(size, groupDelegate, testDataDelegate, out dict);
+            });
+            foreach (int keys in dict.Keys)
+            {
+                int a = 0;
+                for (int j = 0; j < divisor; j++)
+                    result[keys] = new double[divisor];
+                foreach (long value in dict[keys])
                 {
-                    result[c] = ints[c];
+                    result[keys][a] += value;
+                    a++;
+                    if (a == divisor)
+                        a = 0;
                 }
             }
-            for (int c = 0; c < result.Length; c++)
+            for (int i = 0; i < result.Length; i++)
             {
-                result[c] /= 20;
+                for (int j = 0; j < result[i].Length; j++)
+                {
+                    result[i][j] /= 20;
+                }
             }
             return result;
         }
