@@ -28,12 +28,14 @@ namespace ConsoleApp1
 
         private void DrawGraph()
         {
+            
             double[][] array = new double[0][];
             double[] x = new double[0];
             double[] y = new double[0];
             List<string> names = new List<string>();
             Color[] color = { Color.Coral, Color.PowderBlue, Color.RoyalBlue, Color.SpringGreen, Color.YellowGreen, Color.Violet, Color.Teal };
             Test.Test test = new Test.Test();
+            int divisor = 1;
             switch (indexGroup + 1)
             {
                 case 1:
@@ -71,13 +73,8 @@ namespace ConsoleApp1
                     x = new double[5];
                     break;
             }
-            y = new double[array.Length];
-            array = test.Testing(indexGroup + 1, indexTestData + 1);
-
-
             GraphPane graphPane = zedGraphControl2.GraphPane;
             Dock = DockStyle.Fill;
-
             // Устанавливаем заголовки
             graphPane.Title.Text = "Зависимость кол-ва ";
             graphPane.XAxis.Title.Text = "Ось X";
@@ -87,19 +84,31 @@ namespace ConsoleApp1
             graphPane.XAxis.Scale.MinorStep = 100;
             graphPane.XAxis.Scale.MajorStep = 1000000;
 
-            array = TransposeMatrix(array);
-            for (int i = 0; i != x.Length; i++)
+            //результат - матрица, строки - номера сортировок, столбцы - группа тестовых данных.
+            //первые n элементов в столбцах = делителям divisor - результаты сортировки на массивах размером 10 тестовых данных. каждые последующие n сортировок
+            //в столбце - следующая степень 10 в размере массива.
+            array = test.Testing(indexGroup + 1, indexTestData + 1);
+            for (int i = 0; i < array.Length; i++)
             {
-                x[i] = Math.Pow(10, i + 1);
-            }
-            for(int i = 0; i != array[i].Length; i++) 
-            {
-                LineItem lineItem = graphPane.AddCurve(names[i], x, array[i], color[i], SymbolType.Circle);
-                // Настройки линии
-                lineItem.Line.Width = 2.0f; // Ширина линии
-                lineItem.Line.IsSmooth = true; // Гладкая линия
-                lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
-                lineItem.Symbol.Size = 6; // Размер символа на графике
+                int a = 0;
+                for (int del = 0; del < divisor; del++)
+                {
+                    y = new double[divisor];
+                    for (int j = 0; j < divisor; j++)
+                    {
+                        y[j] = array[i][a + del];
+                    }
+                    a += divisor;
+                    LineItem lineItem = graphPane.AddCurve(names[i], x, array[i], color[i], SymbolType.Circle);
+                    // Настройки линии
+                    lineItem.Line.Width = 2.0f; // Ширина линии
+                    lineItem.Line.IsSmooth = true; // Гладкая линия
+                    lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
+                    lineItem.Symbol.Size = 6; // Размер символа на графике
+
+                }
+                if (a == array[i].Length)
+                    continue;
             }
             zedGraphControl2.AxisChange();
             zedGraphControl2.Invalidate();
@@ -113,13 +122,14 @@ namespace ConsoleApp1
         {
             int rows = matrix.GetLength(0);
             double[][] transposed = new double[rows][];
-            foreach(double[] row in matrix)
+            int columns = 0;
+            foreach (double[] row in matrix)
             {
-                int columns = row.GetLength(0);
+                columns = row.GetLength(0);
                 transposed[columns] = new double[rows];
             }
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < columns; i++)
             {
                 for (int j = 0; j < rows; j++)
                 {

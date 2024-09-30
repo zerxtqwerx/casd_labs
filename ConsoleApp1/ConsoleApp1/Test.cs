@@ -7,11 +7,19 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Net.Sockets;
+using static Test.Test;
+using System.Reflection;
 
 namespace Test
 {
     internal class Test
     {
+        private static int[] array1 = null;
+        private static int[] array2 = null;
+        private static int[] array3 = null;
+        private static int[] array4 = null;
+
         //sorting algorithms delegates
         public delegate void GroupDelegate(int[] array);
 
@@ -66,14 +74,85 @@ namespace Test
             TestData.Arrays.RepeatElArray
         };
 
-        // производит тест на выбранной группе сортировок по выбранным тестовым данным
+        List<GroupDelegate> groupDelegate = null;
+        List<TestDataDelegate> testDataDelegate = null;
+        int divisor = 1;
+        int size = 0;
+
+        public void InitialTest(int groupNumber, int testNumber)
+        {
+            //инициализируем группу делегатов, группу сортировок, делитель (сколько массивов сортирует каждая сортировка) и границу размеров массивов
+            switch (groupNumber)
+            {
+                case 1:
+                    groupDelegate = firstGroup;
+                    size = 10000;
+                    break;
+                case 2:
+                    groupDelegate = secondGroup;
+                    size = 100000;
+                    break;
+                case 3:
+                    groupDelegate = thirdGroup;
+                    size = 1000000;
+                    break;
+                default:
+                    groupDelegate = firstGroup;
+                    size = 10000;
+                    break;
+            }
+            switch (testNumber)
+            {
+                case 1:
+                    testDataDelegate = firstTestData;
+                    break;
+                case 2:
+                    testDataDelegate = secondTestData;
+                    break;
+                case 3:
+                    testDataDelegate = thirdTestData;
+                    break;
+                case 4:
+                    testDataDelegate = fourthTestData;
+                    break;
+                default:
+                    testDataDelegate = firstTestData;
+                    divisor = 4;
+                    break;
+            }
+            GenerateArrays();
+        }
+
+        public void GenerateArrays()
+        {
+            if (testDataDelegate == firstTestData)
+            {
+                array1 = new int[size];
+                array1 = testDataDelegate[0](ref size);
+            }
+            else if (testDataDelegate == secondTestData || ) {
+                array1 = new int[size];
+                array2 = new int[size];
+                array3 = new int[size];
+                array4 = new int[size];
+
+                array1 = testData[0](ref size, modulus);
+                array2 = testData[0](ref size, modulus);
+                array3 = testData[0](ref size, modulus);
+                array4 = testData[0](ref size, modulus);
+            }
+        }
+
+        /*// производит тест на выбранной группе сортировок по выбранным тестовым данным
         public static void StartTest(int size, List<GroupDelegate> sortAlgorithms, List<TestDataDelegate> testData,
             out Dictionary<int, List<long>> dictionary, int modulus = 1000)
         {
+            //создаем словарь, массив и индекс
             dictionary = new Dictionary<int, List<long>>();
             List<long> timeList = new List<long>();
             int i = 0;
 
+            //для каждой сортировки из группы создаем массив, засекаем время и проводим каждую сортировку из группы сортировку
             foreach (GroupDelegate sort in sortAlgorithms)
             {
                 foreach (TestDataDelegate data in testData)
@@ -87,14 +166,25 @@ namespace Test
                     stopwatch.Stop();
                     timeList.Add(stopwatch.ElapsedMilliseconds);
                 }
+                //проверяем, есть ли ключ(номер сортировки) в словаре. если нет - добавляем ключ и лист
                 List<long> list = new List<long>();
-                if (dictionary.ContainsKey(i))
-                    dictionary[i] = list;                
-                else
-                    dictionary.Add(i, list);
+                
+
+                //копируем время в словарь по индексу сортировки
 
                 foreach (long time in timeList)
-                    dictionary[i].Add(time);
+                {
+                    long t = time;
+                    if (dictionary.ContainsKey(i))
+                    {
+                        // Если ключа нет, создаем новый список и добавляем его в словарь
+                        List<long> l = new List<long>();
+                        dictionary.Add(i, l);
+                        // Добавляем значение в существующий или только что созданный список
+                        dictionary[i].Add(t);
+                    }
+                }
+                //очищаем массив времени и увеличиваем индекс(номер сортировки)
                 i++;
                 timeList.Clear();
             }
@@ -103,12 +193,17 @@ namespace Test
         //в функцию подают 2 числа: 1- номер группы сортировки и 2 - номер тестовых данных. 
         public double[][] Testing(int groupNumber, int groupData)
         {
+            
             List<GroupDelegate> groupDelegate = null;
             List<TestDataDelegate> testDataDelegate = null;
+            //результат - матрица, строки - номера сортировок, столбцы - группа тестовых данных.
+            //первые n элементов в столбцах = делителям divisor - результаты сортировки на массивах размером 10 тестовых данных. каждые последующие n сортировок
+            //в столбце - следующая степень 10 в размере массива.
             double[][] result = new double[0][];
             int divisor = 1;
             int size;
 
+            //инициализируем группу делегатов, группу сортировок, делитель (сколько массивов сортирует каждая сортировка) и границу размеров массивов
             switch (groupNumber)
             {
                 case 1:
@@ -151,25 +246,44 @@ namespace Test
                     divisor = 4;
                     break;
             }
+            for(int i = 0; i < result.Length; i++)
+                result[i] = new double[divisor];
 
+            //создаем словарь
             Dictionary<int, List<long>> dict = new Dictionary<int, List<long>>();
-            Parallel.For(0, 20, i =>
-            {
-                StartTest(size, groupDelegate, testDataDelegate, out dict);
-            });
+            //для каждого ключа (номер сортировки, строкиа в матрице) инициализируем столбцы (количество различных тестов в группе тестовых данных. 1,2,3 - 1 тестовый массив. 4 - 4 тестовых массива)
             foreach (int keys in dict.Keys)
             {
-                int a = 0;
                 for (int j = 0; j < divisor; j++)
                     result[keys] = new double[divisor];
-                foreach (long value in dict[keys])
+            }
+            int a = 0;
+            //тестируем на массивах рамером от 10 до границы 
+            for (int s = 0; s < size + 1; s *= 10)
+            {
+
+                //проводим 20 тестов для каждого размера массива
+                Parallel.For(0, 20, i =>
                 {
-                    result[keys][a] += value;
-                    a++;
-                    if (a == divisor)
-                        a = 0;
+                    StartTest(s, groupDelegate, testDataDelegate, out dict);
+                });
+
+                foreach (int keys in dict.Keys)
+                {         
+                    int b = a;
+                    //для каждого ключа (номера сортировки) добавляем значение времени. после выполнения цикла в каждой ячейке будет сумма 20 сортировок по соответсвующему времени и номеру массива в группе тестовых данных
+                    foreach (long value in dict[keys])
+                    {
+                        result[keys][b] += value;
+                        b++;
+                        if (b == divisor)
+                            b = 0;
+                    }
                 }
             }
+            a += divisor;
+            
+            //делим каждый элемент на 20 - количество произведенных тестов для каждой сортировки и массива из группы тестовых данных
             for (int i = 0; i < result.Length; i++)
             {
                 for (int j = 0; j < result[i].Length; j++)
@@ -179,5 +293,5 @@ namespace Test
             }
             return result;
         }
+    }*/
     }
-}

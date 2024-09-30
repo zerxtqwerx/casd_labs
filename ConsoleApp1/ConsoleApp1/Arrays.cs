@@ -120,6 +120,11 @@ namespace TestData
             }
             return array;
         }
+
+        public void GenerateArray(int size, out int[] array)
+        {
+            array = new int;
+        }
     }
 }
 
