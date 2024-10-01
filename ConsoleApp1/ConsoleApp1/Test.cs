@@ -10,15 +10,17 @@ using System.Drawing;
 using System.Net.Sockets;
 using static Test.Test;
 using System.Reflection;
+using TestData;
+using ConsoleApp1;
 
 namespace Test
 {
     internal class Test
     {
-        private static int[] array1 = null;
-        private static int[] array2 = null;
-        private static int[] array3 = null;
-        private static int[] array4 = null;
+        private static int[][] array1 = null;
+        private static int[][] array2 = null;
+        private static int[][] array3 = null;
+        private static int[][] array4 = null;
 
         //sorting algorithms delegates
         public delegate void GroupDelegate(int[] array);
@@ -50,7 +52,7 @@ namespace Test
         };
 
         //test data delegates
-        public delegate int[] TestDataDelegate(ref int size, int modulus);
+        public delegate int[] TestDataDelegate(ref int size, int modulus = 1000);
 
         List<TestDataDelegate> firstTestData = new List<TestDataDelegate>
         {
@@ -76,72 +78,144 @@ namespace Test
 
         List<GroupDelegate> groupDelegate = null;
         List<TestDataDelegate> testDataDelegate = null;
+        int groupNumber = 0;
+        int testNumber = 0;
         int divisor = 1;
-        int size = 0;
+        int size = 10000;
 
-        public void InitialTest(int groupNumber, int testNumber)
+        public void InitialTest(int groupNumber_, int testNumber_)
         {
+            groupNumber = groupNumber_ + 1;
+            testNumber = testNumber_ + 1;
+            
             //инициализируем группу делегатов, группу сортировок, делитель (сколько массивов сортирует каждая сортировка) и границу размеров массивов
             switch (groupNumber)
             {
                 case 1:
-                    groupDelegate = firstGroup;
+                    groupDelegate = new List<GroupDelegate>(firstGroup);                   
                     size = 10000;
                     break;
                 case 2:
-                    groupDelegate = secondGroup;
+                    groupDelegate = new List<GroupDelegate>(secondGroup);
                     size = 100000;
                     break;
                 case 3:
-                    groupDelegate = thirdGroup;
+                    groupDelegate = new List<GroupDelegate>(thirdGroup);
                     size = 1000000;
                     break;
                 default:
-                    groupDelegate = firstGroup;
+                    groupDelegate = new List<GroupDelegate>(firstGroup);
                     size = 10000;
                     break;
             }
             switch (testNumber)
             {
                 case 1:
-                    testDataDelegate = firstTestData;
+                    testDataDelegate = new List<TestDataDelegate>(firstTestData);
                     break;
                 case 2:
-                    testDataDelegate = secondTestData;
+                    testDataDelegate = new List<TestDataDelegate>(secondTestData);
                     break;
                 case 3:
-                    testDataDelegate = thirdTestData;
+                    testDataDelegate = new List<TestDataDelegate>(thirdTestData);
                     break;
                 case 4:
-                    testDataDelegate = fourthTestData;
+                    testDataDelegate = new List<TestDataDelegate>(fourthTestData);
                     break;
                 default:
-                    testDataDelegate = firstTestData;
+                    testDataDelegate = new List<TestDataDelegate>(firstTestData);
                     divisor = 4;
                     break;
             }
+            
             GenerateArrays();
         }
 
+        //генерирует тестовые массивы. инициализирует массив массивов для каждого типа подготовленных данных. количество массивов = наибольшей степени 10 в size (значение логарифма)
         public void GenerateArrays()
         {
-            if (testDataDelegate == firstTestData)
+            if (testDataDelegate.Count == 1)
             {
-                array1 = new int[size];
-                array1 = testDataDelegate[0](ref size);
-            }
-            else if (testDataDelegate == secondTestData || ) {
-                array1 = new int[size];
-                array2 = new int[size];
-                array3 = new int[size];
-                array4 = new int[size];
+                array1 = new int[(int)Math.Log(size, 10)][];
+                int c = 0;
+                for (int i = 10; i < size + 1; i *= 10)
+                {
+                    array1[c] = new int[i];
+                    array1[c] = testDataDelegate[0](ref i);
+                    c++;
+                }
 
-                array1 = testData[0](ref size, modulus);
-                array2 = testData[0](ref size, modulus);
-                array3 = testData[0](ref size, modulus);
-                array4 = testData[0](ref size, modulus);
+                
+            }
+            else if (testDataDelegate.Count == 4)
+            {
+                array1 = new int[(int)Math.Log(size, 10)][];
+                array2 = new int[(int)Math.Log(size, 10)][];
+                array3 = new int[(int)Math.Log(size, 10)][];
+                array4 = new int[(int)Math.Log(size, 10)][];
+                int c = 0;
+                for (int i = 10; i < size + 1; i *= 10)
+                {
+                    array1[c] = new int[i];
+                    array2[c] = new int[i];
+                    array3[c] = new int[i];
+                    array4[c] = new int[i];
+
+                    array1[c] = testDataDelegate[0](ref i);
+                    array2[c] = testDataDelegate[1](ref i);
+                    array3[c] = testDataDelegate[2](ref i);
+                    array4[c] = testDataDelegate[3](ref i);
+
+                    c++;
+                }            
             }
         }
+        public void StartTest()//out double[] x, out double[][] y)
+        {
+            double[] x = new double[array1.Length];
+            double[][] y = new double[groupDelegate.Count][];
+
+            if (groupDelegate != null)
+            {
+
+                if (testDataDelegate.Count == 1)
+                {
+                    for (int sortInd = 0; sortInd != groupDelegate.Count; sortInd++)
+                    {
+                        y[sortInd] = new double[array1.Length];
+                        for (int i = 0; i < array1.Length; i++)
+                        {
+                            {
+                                x[i] = array1[i].Length;
+                                double time = 0;
+                                Parallel.For(0, 20, j =>
+                                {
+                                    Stopwatch stopwatch = new Stopwatch();
+                                    stopwatch.Start();
+
+                                    groupDelegate[sortInd](array1[i]);
+
+                                    stopwatch.Stop();
+                                    time += stopwatch.ElapsedMilliseconds;
+                                });
+                                time /= 20;
+                                y[sortInd][i] = time;
+                            }
+                        }
+                    }
+                    ConsoleApp1.Graph graph = new ConsoleApp1.Graph(groupNumber, testNumber, size);
+                    graph.DrawGraph(x, y);
+                    graph.ShowDialog();
+                }
+                else if (testDataDelegate.Count == 4)
+                {
+
+                }
+            }
+            //graph.ShowDialog();
+        }
+    }
+}
 
         /*// производит тест на выбранной группе сортировок по выбранным тестовым данным
         public static void StartTest(int size, List<GroupDelegate> sortAlgorithms, List<TestDataDelegate> testData,
@@ -294,4 +368,4 @@ namespace Test
             return result;
         }
     }*/
-    }
+    

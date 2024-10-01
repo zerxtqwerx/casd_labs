@@ -11,6 +11,8 @@ using ZedGraph;
 using Test;
 using static System.Net.Mime.MediaTypeNames;
 using System.Drawing.Drawing2D;
+using TestData;
+using System.Security.Policy;
 
 namespace ConsoleApp1
 {
@@ -18,30 +20,24 @@ namespace ConsoleApp1
     {
         int indexGroup = 0;
         int indexTestData = 0;
+        int indexChapter = 0;
+        int indexName = 0;
+        int indexColor = 0;
+        int size = 0;
+        List<string> names = new List<string>();
+        List<string> chapters = new List<string>();
+        Color[] color = { Color.Coral, Color.PowderBlue, Color.RoyalBlue, Color.SpringGreen, Color.YellowGreen, Color.Violet, Color.Teal };
+       
 
-        public Graph(int a, int b)
+        public Graph(int a, int b, int size_)
         {
             InitializeComponent();
             indexGroup = a;
             indexTestData = b;
-        }
 
-        private void DrawGraph()
-        {
-            
-            double[][] array = new double[0][];
-            double[] x = new double[0];
-            double[] y = new double[0];
-            List<string> names = new List<string>();
-            Color[] color = { Color.Coral, Color.PowderBlue, Color.RoyalBlue, Color.SpringGreen, Color.YellowGreen, Color.Violet, Color.Teal };
-            Test.Test test = new Test.Test();
-            int divisor = 1;
-            switch (indexGroup + 1)
+            switch (indexGroup)
             {
                 case 1:
-                    array = new double[5][];
-                    x = new double[5];
-
                     names.Add("Bubble");
                     names.Add("Insertion");
                     names.Add("Selection");
@@ -49,17 +45,11 @@ namespace ConsoleApp1
                     names.Add("Gnome");
                     break;
                 case 2:
-                    array = new double[3][];
-                    x = new double[3];
-
                     names.Add("Bitonic");
                     names.Add("Shell");
                     names.Add("Tree");
                     break;
                 case 3:
-                    array = new double[7][];
-                    x = new double[7];
-
                     names.Add("Comb");
                     names.Add("Heap");
                     names.Add("Quick");
@@ -69,89 +59,113 @@ namespace ConsoleApp1
                     names.Add("Radiax");
                     break;
                 default:
-                    array = new double[5][];
-                    x = new double[5];
                     break;
             }
-            GraphPane graphPane = zedGraphControl2.GraphPane;
+            switch (indexTestData)
+            {
+                case 1:
+                    chapters.Add("Массивы случайных чисел по модулю 1000");
+                    break;
+                case 2:
+                    chapters.Add("Массивы, разбитые на несколько отсортированных подмассивов разного размера");
+                    break;
+                case 3:
+                    chapters.Add("Изначально отсортированные массивы случайных чисел с некоторым числом перестановок двух случайных элементов");
+                    break;
+                case 4:
+                    chapters.Add("Полностью отсортированные массивы в прямом порядке");
+                    chapters.Add("Полностью отсортированные массивы в обратном порядке");
+                    chapters.Add("Полностью отсортированные массивы с несколькими заменёнными элементами");
+                    chapters.Add("Полностью отсортированные массивы с большим количеством повторений одного элемента");
+                    break;
+                default:
+                    chapters.Add("Массивы случайных чисел по модулю 1000");
+                    break;
+            }
+            
+        }
+
+        public void DrawGraph(double[] x, double[][] y)
+        {
+            GraphPane graphPane = new GraphPane();
             Dock = DockStyle.Fill;
             // Устанавливаем заголовки
-            graphPane.Title.Text = "Зависимость кол-ва ";
+            if (chapters != null)
+            {
+                graphPane.Title.Text = chapters[0].ToString();
+                indexChapter++;
+            }
             graphPane.XAxis.Title.Text = "Ось X";
             graphPane.YAxis.Title.Text = "Ось Y";
-            graphPane.XAxis.Scale.Min = 0;
-            graphPane.XAxis.Scale.Max = Math.Pow(10, x.Length);
-            graphPane.XAxis.Scale.MinorStep = 100;
-            graphPane.XAxis.Scale.MajorStep = 1000000;
+            graphPane.XAxis.Scale.Min = 10;
+            graphPane.XAxis.Scale.Max = size;
 
-            //результат - матрица, строки - номера сортировок, столбцы - группа тестовых данных.
-            //первые n элементов в столбцах = делителям divisor - результаты сортировки на массивах размером 10 тестовых данных. каждые последующие n сортировок
-            //в столбце - следующая степень 10 в размере массива.
-            array = test.Testing(indexGroup + 1, indexTestData + 1);
-            for (int i = 0; i < array.Length; i++)
+            graphPane.YAxis.Scale.Min = 0;
+            graphPane.YAxis.Scale.Max = 100;
+            graphPane.YAxis.Scale.MinorStep = 0;
+            graphPane.YAxis.Scale.MajorStep = size;
+
+            for (int i = 0; i < y.Length; i++)
             {
-                int a = 0;
-                for (int del = 0; del < divisor; del++)
-                {
-                    y = new double[divisor];
-                    for (int j = 0; j < divisor; j++)
-                    {
-                        y[j] = array[i][a + del];
-                    }
-                    a += divisor;
-                    LineItem lineItem = graphPane.AddCurve(names[i], x, array[i], color[i], SymbolType.Circle);
-                    // Настройки линии
-                    lineItem.Line.Width = 2.0f; // Ширина линии
-                    lineItem.Line.IsSmooth = true; // Гладкая линия
-                    lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
-                    lineItem.Symbol.Size = 6; // Размер символа на графике
+                LineItem lineItem = graphPane.AddCurve(names[i], x, y[i], color[i], SymbolType.Circle);
 
-                }
-                if (a == array[i].Length)
-                    continue;
+                // Настройки линии
+                lineItem.Line.Width = 2.0f; // Ширина линии
+                lineItem.Line.IsSmooth = true; // Гладкая линия
+                lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
+                lineItem.Symbol.Size = 6; // Размер символа на графике
+
+                
+                //нет ивента чтобы изменить график на форме
             }
             zedGraphControl2.AxisChange();
             zedGraphControl2.Invalidate();
         }
-        private void Graph_Load(object sender, EventArgs e)
-        {
-            DrawGraph();
-        }
 
-        static double[][] TransposeMatrix(double[][] matrix)
+        /*private void zedGraphControl2_Load(object sender, EventArgs e)
         {
-            int rows = matrix.GetLength(0);
-            double[][] transposed = new double[rows][];
-            int columns = 0;
-            foreach (double[] row in matrix)
-            {
-                columns = row.GetLength(0);
-                transposed[columns] = new double[rows];
-            }
+            double[] x;
+            double[][] y;
 
-            for (int i = 0; i < columns; i++)
-            {
-                for (int j = 0; j < rows; j++)
-                {
-                    transposed[j][i] = matrix[i][j];
-                }
-            }
-            return transposed;
-        }
+        }*/
     }
 }
-            
-            /*for(int i = 0; i != array.Length; i++)
+
+        /*//результат - матрица, строки - номера сортировок, столбцы - группа тестовых данных.
+        //первые n элементов в столбцах = делителям divisor - результаты сортировки на массивах размером 10 тестовых данных. каждые последующие n сортировок
+        //в столбце - следующая степень 10 в размере массива.
+        //array = test.Testing(indexGroup + 1, indexTestData + 1);
+        for (int i = 0; i < array.Length; i++)
+        {
+            int a = 0;
+            for (int del = 0; del < divisor; del++)
             {
+                y = new double[divisor];
+                for (int j = 0; j < divisor; j++)
+                {
+                    y[j] = array[i][a + del];
+                }
+                a += divisor;
                 LineItem lineItem = graphPane.AddCurve(names[i], x, array[i], color[i], SymbolType.Circle);
                 // Настройки линии
                 lineItem.Line.Width = 2.0f; // Ширина линии
                 lineItem.Line.IsSmooth = true; // Гладкая линия
                 lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
                 lineItem.Symbol.Size = 6; // Размер символа на графике
+
             }
-            
-*/
+            if (a == array[i].Length)
+                continue;
+        }*/
+/*
+        private void Graph_Load(object sender, EventArgs e)
+        {
+            //DrawGraph();
+        }
+
+    }
+}*/
+         
 
             /*// Инициализация объекта GraphPane
             GraphPane graphPane = zedGraphControl2.GraphPane;

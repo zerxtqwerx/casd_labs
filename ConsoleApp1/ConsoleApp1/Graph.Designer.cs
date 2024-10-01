@@ -34,8 +34,7 @@
             // 
             // zedGraphControl2
             // 
-            this.zedGraphControl2.Location = new System.Drawing.Point(1, 3);
-            this.zedGraphControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.zedGraphControl2.Location = new System.Drawing.Point(1, 2);
             this.zedGraphControl2.Name = "zedGraphControl2";
             this.zedGraphControl2.ScrollGrace = 0D;
             this.zedGraphControl2.ScrollMaxX = 0D;
@@ -44,19 +43,19 @@
             this.zedGraphControl2.ScrollMinX = 0D;
             this.zedGraphControl2.ScrollMinY = 0D;
             this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(798, 446);
+            this.zedGraphControl2.Size = new System.Drawing.Size(598, 362);
             this.zedGraphControl2.TabIndex = 0;
             this.zedGraphControl2.UseExtendedPrintDialog = true;
             // 
             // Graph
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.zedGraphControl2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Graph";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Graph_Load);
             this.ResumeLayout(false);
 
         }
