@@ -71,10 +71,20 @@ namespace Test
         List<TestDataDelegate> fourthTestData = new List<TestDataDelegate>
         {
             TestData.Arrays.ForwardSortArray,
-            TestData.Arrays.ReverseSortArray,
-            TestData.Arrays.ReplaceElementsArray,
+        };
+        List<TestDataDelegate> fifthTestData = new List<TestDataDelegate> 
+        {
+            TestData.Arrays.ReverseSortArray
+        };
+        List<TestDataDelegate> sixthTestData = new List<TestDataDelegate> 
+        {
+            TestData.Arrays.ReplaceElementsArray
+        };
+        List<TestDataDelegate> seventhTestData = new List<TestDataDelegate>
+        {
             TestData.Arrays.RepeatElArray
         };
+
 
         List<GroupDelegate> groupDelegate = null;
         List<TestDataDelegate> testDataDelegate = null;
@@ -121,6 +131,15 @@ namespace Test
                     break;
                 case 4:
                     testDataDelegate = new List<TestDataDelegate>(fourthTestData);
+                    break;
+                case 5:
+                    testDataDelegate = new List<TestDataDelegate>(fifthTestData);
+                    break;
+                case 6:
+                    testDataDelegate = new List<TestDataDelegate>(sixthTestData);
+                    break;
+                case 7:
+                    testDataDelegate = new List<TestDataDelegate>(seventhTestData);
                     break;
                 default:
                     testDataDelegate = new List<TestDataDelegate>(firstTestData);
@@ -173,7 +192,7 @@ namespace Test
         public void StartTest()//out double[] x, out double[][] y)
         {
             double[] x = new double[array1.Length];
-            double[][] y = new double[groupDelegate.Count][];
+            long[][] y = new long[groupDelegate.Count][];
 
             if (groupDelegate != null)
             {
@@ -182,12 +201,12 @@ namespace Test
                 {
                     for (int sortInd = 0; sortInd != groupDelegate.Count; sortInd++)
                     {
-                        y[sortInd] = new double[array1.Length];
+                        y[sortInd] = new long[array1.Length];
                         for (int i = 0; i < array1.Length; i++)
                         {
                             {
                                 x[i] = array1[i].Length;
-                                double time = 0;
+                                long time = 0;
                                 Parallel.For(0, 20, j =>
                                 {
                                     Stopwatch stopwatch = new Stopwatch();
@@ -203,8 +222,7 @@ namespace Test
                             }
                         }
                     }
-                    ConsoleApp1.Graph graph = new ConsoleApp1.Graph(groupNumber, testNumber, size);
-                    graph.DrawGraph(x, y);
+                    ConsoleApp1.Graph graph = new ConsoleApp1.Graph(groupNumber, testNumber, size, x, y);
                     graph.ShowDialog();
                 }
                 else if (testDataDelegate.Count == 4)

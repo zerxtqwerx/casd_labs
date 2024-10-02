@@ -18,6 +18,7 @@ namespace ConsoleApp1
 {
     public partial class Graph : Form
     {
+        ZedGraphControl zedGraphControl2;
         int indexGroup = 0;
         int indexTestData = 0;
         int indexChapter = 0;
@@ -27,11 +28,10 @@ namespace ConsoleApp1
         List<string> names = new List<string>();
         List<string> chapters = new List<string>();
         Color[] color = { Color.Coral, Color.PowderBlue, Color.RoyalBlue, Color.SpringGreen, Color.YellowGreen, Color.Violet, Color.Teal };
-       
 
-        public Graph(int a, int b, int size_)
+
+        public Graph(int a, int b, int size_, double[] x, long[][] y)
         {
-            InitializeComponent();
             indexGroup = a;
             indexTestData = b;
 
@@ -82,13 +82,10 @@ namespace ConsoleApp1
                     chapters.Add("Массивы случайных чисел по модулю 1000");
                     break;
             }
-            
-        }
 
-        public void DrawGraph(double[] x, double[][] y)
-        {
-            GraphPane graphPane = new GraphPane();
-            Dock = DockStyle.Fill;
+            zedGraphControl2 = new ZedGraphControl { Dock = DockStyle.Fill };
+            this.Controls.Add(zedGraphControl2);
+            GraphPane graphPane = zedGraphControl2.GraphPane;
             // Устанавливаем заголовки
             if (chapters != null)
             {
@@ -97,17 +94,22 @@ namespace ConsoleApp1
             }
             graphPane.XAxis.Title.Text = "Ось X";
             graphPane.YAxis.Title.Text = "Ось Y";
-            graphPane.XAxis.Scale.Min = 10;
+            /*graphPane.XAxis.Scale.Min = 10;
             graphPane.XAxis.Scale.Max = size;
 
             graphPane.YAxis.Scale.Min = 0;
             graphPane.YAxis.Scale.Max = 100;
             graphPane.YAxis.Scale.MinorStep = 0;
-            graphPane.YAxis.Scale.MajorStep = size;
+            graphPane.YAxis.Scale.MajorStep = size;*/
 
             for (int i = 0; i < y.Length; i++)
             {
-                LineItem lineItem = graphPane.AddCurve(names[i], x, y[i], color[i], SymbolType.Circle);
+                PointPairList points = new PointPairList();
+                for(int j = 0; j != y[i].Length; j++)
+                {
+                    points.Add(x[j], y[i][j]);
+                }
+                LineItem lineItem = graphPane.AddCurve(names[i], points, color[i], SymbolType.Circle);
 
                 // Настройки линии
                 lineItem.Line.Width = 2.0f; // Ширина линии
@@ -115,12 +117,22 @@ namespace ConsoleApp1
                 lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
                 lineItem.Symbol.Size = 6; // Размер символа на графике
 
-                
+
                 //нет ивента чтобы изменить график на форме
             }
+            /*            InitializeComponent();
+                        zedGraphControl2.AxisChange();
+                        zedGraphControl2.Invalidate();*/
+
+            //InitializeComponent();
+            InitializeComponent();
             zedGraphControl2.AxisChange();
             zedGraphControl2.Invalidate();
+
         }
+    }
+}
+
 
         /*private void zedGraphControl2_Load(object sender, EventArgs e)
         {
@@ -128,8 +140,6 @@ namespace ConsoleApp1
             double[][] y;
 
         }*/
-    }
-}
 
         /*//результат - матрица, строки - номера сортировок, столбцы - группа тестовых данных.
         //первые n элементов в столбцах = делителям divisor - результаты сортировки на массивах размером 10 тестовых данных. каждые последующие n сортировок
