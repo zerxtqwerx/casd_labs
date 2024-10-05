@@ -28,7 +28,7 @@ namespace ConsoleApp1
         List<string> names = new List<string>();
         List<string> chapters = new List<string>();
         Color[] color = { Color.Coral, Color.PowderBlue, Color.RoyalBlue, Color.SpringGreen, Color.YellowGreen, Color.Violet, Color.Teal };
-
+        Button button;
 
         public Graph(int a, int b, int size_, double[] x, long[][] y)
         {
@@ -113,7 +113,7 @@ namespace ConsoleApp1
 
                 // Настройки линии
                 lineItem.Line.Width = 2.0f; // Ширина линии
-                lineItem.Line.IsSmooth = true; // Гладкая линия
+                //lineItem.Line.IsSmooth = true; // Гладкая линия
                 lineItem.Line.SmoothTension = 0.5f; // Напряжение гладкой линии
                 lineItem.Symbol.Size = 6; // Размер символа на графике
 
@@ -128,7 +128,35 @@ namespace ConsoleApp1
             InitializeComponent();
             zedGraphControl2.AxisChange();
             zedGraphControl2.Invalidate();
+            button = new Button();
+            button.Text = "Save to file";
+            this.Controls.Add(button);
+            button.BringToFront();
+            button.Click += button1_MouseClick;
 
+
+        }
+        [STAThread]
+        private void button1_MouseClick(object sender, EventArgs e)
+        {
+            if (zedGraphControl2.GraphPane != null)
+            {
+                // Сохранение графика в изображение
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
+                    saveFileDialog.Title = "Сохранить график как изображение";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Получаем объект Bitmap из zedGraphControl
+                        Bitmap bmp = (Bitmap)zedGraphControl2.GetImage();
+                        // Сохраняем изображение в указанный файл
+                        bmp.Save(saveFileDialog.FileName);
+                        MessageBox.Show("График сохранен!");
+                    }
+                }
+            }
         }
     }
 }

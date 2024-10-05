@@ -57,7 +57,7 @@ namespace TestData
 
                 int temp = array[a];
                 array[a] = array[b];
-                array[b] = array[temp];
+                array[b] = temp;
             }
             return array;
         }

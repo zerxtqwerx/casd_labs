@@ -3,40 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\arrays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\arrays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\graph.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\graph.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\arrays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\arrays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,43 +46,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Sort.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Sort.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Sort.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Sort.cs",
               "RelativeToolTip": "ConsoleApp1\\Sort.cs",
-              "ViewState": "AQIAAJgAAAAAAAAAAAAlwKkAAAAMAAAA",
+              "ViewState": "AQIAAOEAAAAAAAAAAAAlwCoBAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T08:52:21.267Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Arrays.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Arrays.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Arrays.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Arrays.cs",
               "RelativeToolTip": "ConsoleApp1\\Arrays.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAHkAAAAJAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAlwDsAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-16T13:22:55.785Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Test.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Test.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Test.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Test.cs",
               "RelativeToolTip": "ConsoleApp1\\Test.cs",
-              "ViewState": "AQIAAO0AAAAAAAAAAAAlwN0AAAAdAAAA",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAlwJ0AAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-16T13:52:43.033Z",
               "IsPinned": true,
@@ -90,16 +92,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-10T19:06:58.545Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -111,54 +114,59 @@
               "RelativeToolTip": "ConsoleApp1\\Graph.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-18T07:35:49.554Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Graph.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Graph.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Graph.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Graph.cs",
               "RelativeToolTip": "ConsoleApp1\\Graph.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAAAG8AAABHAAAA",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAlwJUAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T08:46:07.979Z"
+              "WhenOpened": "2024-10-02T08:46:07.979Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Graph.Designer.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Graph.Designer.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Graph.Designer.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Graph.Designer.cs",
               "RelativeToolTip": "ConsoleApp1\\Graph.Designer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-01T06:41:08.602Z"
+              "WhenOpened": "2024-10-01T06:41:08.602Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Menu.cs [Design]",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Menu.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Menu.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Menu.cs [Design]",
               "RelativeToolTip": "ConsoleApp1\\Menu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T08:47:36.813Z"
+              "WhenOpened": "2024-09-18T08:47:36.813Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Menu.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Menu.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Menu.cs",
               "RelativeToolTip": "ConsoleApp1\\Menu.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAADIAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAB4AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T09:01:27.66Z"
+              "WhenOpened": "2024-09-18T09:01:27.66Z",
+              "EditorCaption": ""
             }
           ]
         }

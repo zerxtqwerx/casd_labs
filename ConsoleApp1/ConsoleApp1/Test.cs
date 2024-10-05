@@ -156,6 +156,7 @@ namespace Test
             if (testDataDelegate.Count == 1)
             {
                 array1 = new int[(int)Math.Log(size, 10)][];
+                //Console.WriteLine(Math.Log(size, 10));
                 int c = 0;
                 for (int i = 10; i < size + 1; i *= 10)
                 {

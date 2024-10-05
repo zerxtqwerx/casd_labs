@@ -9,6 +9,7 @@ namespace Program
 {
     internal class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             Menu menu = new Menu();
