@@ -32,7 +32,7 @@ namespace TestData
                 int subArraySize = rand.Next(0, restSize);
                 int[] array = RandNum(ref subArraySize);
                 Array.Sort(array);
-                for (int j = i; j < array.Length; j++)
+                for (int j = 0; j < array.Length; j++)
                 {
                     arrays[i] = array[j];
                     i++;
