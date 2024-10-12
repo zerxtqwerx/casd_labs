@@ -3,37 +3,43 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-class Program
+namespace ConsoleApp1
 {
-    static void Main()
+
+    class Program
     {
-        string filePath = "input.txt";
-
-        HashSet<string> tags = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-        try
+        static void Main()
         {
-            foreach (var line in File.ReadLines(filePath))
+            string filePath = "input.txt";
+
+            MyArrayList<string> tags = new MyArrayList<string>();
+
+            try
             {
-                var matches = Regex.Matches(line, @"<\s*\/?\s*([a-zA-Z][a-zA-Z0-9]*)\s*>");
-                foreach (Match match in matches)
+                foreach (var line in File.ReadLines(filePath))
                 {
-                    string tag = match.Value.Trim('<', '>', ' ');
+                    var matches = Regex.Matches(line, @"<\s*\/?\s*([a-zA-Z][a-zA-Z0-9]*)\s*>");
+                    foreach (Match match in matches)
+                    {
+                        string tag = match.Value.Trim('<', '>', ' ');
 
-                    tags.Add(match.Groups[1].Value.Trim());
+                        if(tags.Contains(match.Groups[1].Value.Trim()) == false)
+                            tags.Add(match.Groups[1].Value.Trim());
+                    }
                 }
-            }
 
-            foreach (var tag in tags)
-            {
-                Console.WriteLine(tag);
+
+                for (int i = 0; i < tags.Size(); i++) 
+                {
+                    Console.WriteLine(tags.Get(i));
+                }
+                Console.ReadLine();
             }
-            Console.ReadLine();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Произошла ошибка: {ex.Message}");
-            Console.ReadLine();
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
+                Console.ReadLine();
+            }
         }
     }
 }
