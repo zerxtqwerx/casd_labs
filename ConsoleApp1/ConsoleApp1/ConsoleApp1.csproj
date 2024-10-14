@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpressionEvulator.cs" />
     <Compile Include="MyStack.cs" />
     <Compile Include="MyVector.cs" />
     <Compile Include="Program.cs" />

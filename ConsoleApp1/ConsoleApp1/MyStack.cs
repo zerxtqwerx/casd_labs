@@ -39,10 +39,10 @@ public class MyStack<T> : MyVector<T>
         {
             if (EqualityComparer<T>.Default.Equals(Get(Size() - i - 1), item))
             {
-                return i + 1; // Возвращаем глубину (позицию)
+                return i + 1; 
             }
         }
 
-        return -1; // Если элемент не найден
+        return -1; 
     }
 }
