@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
 
-    public class MyVector<T>
+    public class MyVector<T> : IEnumerable<T>
     {
         private T[] elementData;        //1
         private int elementCount;       //2
@@ -355,6 +356,19 @@ namespace ConsoleApp1
             {
                 throw new ArgumentOutOfRangeException("Элемент вне диапазона");
             }
+        }
+        
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < elementCount; i++)
+            {
+                yield return elementData[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
