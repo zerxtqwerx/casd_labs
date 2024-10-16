@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Text;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        Console.OutputEncoding = Encoding.GetEncoding(1251);
+
         Console.WriteLine("Введите математическое выражение в обратной польской нотации:");
         string input = Console.ReadLine();
 
