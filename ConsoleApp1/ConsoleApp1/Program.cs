@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace ConsoleApp1
 {
@@ -8,6 +9,7 @@ namespace ConsoleApp1
     {
         static void Main()
         {
+            Console.OutputEncoding = Encoding.GetEncoding(1251);
             string[] lines = File.ReadAllLines("input.txt");
             MyVector<string> ipAddresses = new MyVector<string>();
 

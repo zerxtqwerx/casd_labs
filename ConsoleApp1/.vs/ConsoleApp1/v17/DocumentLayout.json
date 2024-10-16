@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\",
+  "WorkspaceRootPath": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\myvector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\myvector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myvector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,24 +24,23 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MyVector.cs",
-              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyVector.cs",
+              "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyVector.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\MyVector.cs",
-              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyVector.cs",
+              "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyVector.cs",
               "RelativeToolTip": "ConsoleApp1\\MyVector.cs",
               "ViewState": "AQIAAEIBAAAAAAAAAAArwFMBAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T08:39:18.611Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-12T08:39:18.611Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAArwCEAAABTAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-10T19:06:58.545Z",
               "EditorCaption": ""
