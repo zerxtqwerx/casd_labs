@@ -28,7 +28,7 @@ public class Heap<T> where T : IComparable<T>
         }
     }
 
-    //2
+    //2//
     public T Peek()
     {
         if (size == 0)
