@@ -5,6 +5,11 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
 using ConsoleApp1;
+using System.Data.Common;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 
 public class Calculator
 {
@@ -34,7 +39,10 @@ public class Calculator
             return Math.Log(a);
         }
         else if (sign == "log")
+        {
+            if (a <= 0) throw new ArgumentException();
             return Math.Log10(a);
+        }
         else if (sign == "min")
             return Math.Min(a, b);
         else if (sign == "max")
@@ -43,22 +51,51 @@ public class Calculator
             return a % b;
         else if (sign == "//")
             return (int)(a / b);
-        else if (sign == "e")
-            return Math.Exp();
-        else if(sign ==)
+        else if (sign == "exp")
+            return Math.Exp(1);
+        else if (sign == "trunc")
+            return Math.Truncate(a);
         return 0;
     }
 
-    string[] operators = { "+", "-", "*", "/", "^", "√", "sin", "cos", "tan", "ln", "log", "min", "max", "%", "//", "e", "[", "]", "(", ")"};
+    /*private static bool Comparator(string token)
+    {
+        if(token) return true;
+    }*/
+
+    private static string[] operators = { "+", "-", "*", "/", "^", "√", "sin", "cos", "tan", "ln", "log", "min", "max", "%", "//", "trunc", "(", ")" };
+    private static string numberPattern = @"^-?\d+(\.\d+)?$";
 
     public static void Parse(string expression, out MyStack<double> numbers, out MyStack<string> signs)
     {
-        numbers = new MyStack<double>();    
+        numbers = new MyStack<double>();
         signs = new MyStack<string>();
 
         string[] tokens = expression.Split(' ');
-        foreach(var token in tokens)
+        foreach (var token in tokens)
         {
+            try
+            {
+                if (Array.Find(operators, op => op.Equals(token)) != null) //если оператор
+                {
+                    signs.Push(token);
+                }
+                else if (token == "exp")
+                {
+                    numbers.Push(Math.Exp(1));
+                }
+                else if (Regex.Matches(token, numberPattern).Count > 0) //если число
+                {
+                    double a = 0;
+                    double.TryParse(token, NumberStyles.Any, CultureInfo.InvariantCulture, out a);
+                    numbers.Push(a);
+                    continue;
+                }
+            }
+            catch 
+            {
+                Console.WriteLine("Ввели некорректное выражение. Разделите все операции, числа и скобки пробелами. Вместо , в дробном числе введите .");
+            }
 
         }
     }
@@ -66,195 +103,108 @@ public class Calculator
     public static void Main(string[] args)
     {
         Console.OutputEncoding = Encoding.GetEncoding(1251);
-        try
+        while (true)
         {
-            while (true)
             {
-                Console.WriteLine("Введите математическое выражение:");
-                string infix = Console.ReadLine();
-
-                //string postfix = InfixToPostfix(infix);
-                //double result = EvaluatePostfix(postfix);
-                //Console.WriteLine($"Результат: {result}");
+                Console.WriteLine("Введите математическое выражение, разделяя все отдельные части выражения пробелом:");
+                string expression = Console.ReadLine();
+                try
+                {
+                    Parse(expression, out MyStack<double> numbers, out MyStack<string> signs);
+                    double result = Calculate(numbers, signs);
+                    Console.WriteLine(result);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка: {ex.Message}");
+                }
             }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка: {ex.Message}");
-            Console.ReadLine();
-        }
     }
-}
-
-/*public class Calculator
-{
-    private static int GetPrecedence(char op)
+    private static double Calculate(MyStack<double> numbers, MyStack<string> signs)
     {
-        switch (op)
+        while (!signs.Empty() && !numbers.Empty())
         {
-            case '+':
-            case '-':
-                return 1;
-            case '*':
-            case '/':
-                return 2;
-            case '^':
-                return 3;
-            default:
-                return 0;
-        }
-    }
-
-    private static bool IsOperator(string s) => s.Length == 1 && "+-*/^".Contains(s);
-
-    public static string InfixToPostfix(string expression)
-    {
-        var output = new List<string>();
-        var operators = new MyStack<string>();
-
-        var tokens = expression.Split(' ');
-
-        foreach (var token in tokens)
-        {
-            if (double.TryParse(token, out _) || char.IsLetter(token[0]))
+            try
             {
-                output.Add(token);
+                var sign = signs.Pop();
+                if (sign == ")")
+                {
+                    numbers.Push(Calculate(numbers, signs));
+                }
+                else if (sign == "(")
+                    break;
+                else
+                    numbers.Push(Switch(sign, numbers));
             }
-            else if (token == "(")
-            {
-                operators.Push(token);
-            }
-            else if (token == ")")
-            {
-                while (!operators.IsEmpty() && operators.Peek() != "(")
-                    output.Add(operators.Pop());
-                operators.Pop(); // Remove "(" from stack
-            }
-            else if (IsOperator(token))
-            {
-                while (!operators.IsEmpty() && GetPrecedence(operators.Peek()[0]) >= GetPrecedence(token[0]))
-                    output.Add(operators.Pop());
-                operators.Push(token);
+            catch (Exception ex) 
+            { 
+                Console.WriteLine($"Ошибка: {ex.Message}");
             }
         }
-
-        while (!operators.IsEmpty())
-            output.Add(operators.Pop());
-
-        return string.Join(" ", output);
+        return numbers.Pop();
     }
 
-    public static double EvaluatePostfix(string expression)
-    {
-        var values = new MyStack<double>();
-        var tokens = expression.Split(' ');
-
-        foreach (var token in tokens)
-        {
-            if (double.TryParse(token, out double number))
-            {
-                values.Push(number);
-            }
-            else if (IsOperator(token))
-            {
-                double b = values.Pop();
-                double a = values.Pop();
-                values.Push(Switch(token, a, b));
-            }
-        }
-
-        return values.Pop();
-    }
-
-    public static double Switch(string sign, double a, double b)
+    public static double Switch(string sign, MyStack<double> numbers)
     {
         if (sign == "+")
-            return a + b;
+            return numbers.Pop() + numbers.Pop();
         else if (sign == "-")
-            return a - b;
+            return -1 * (numbers.Pop() - numbers.Pop());
         else if (sign == "*")
-            return a * b;
+            return numbers.Pop() * numbers.Pop();
         else if (sign == "/")
-            return a / b;
+        {
+            var a = numbers.Pop();
+            var b = numbers.Pop();
+            return b / a;
+        }
         else if (sign == "^")
-            return Math.Pow(a, b);
+        {
+            var a = numbers.Pop();
+            var b = numbers.Pop();
+            return Math.Pow(b, a);
+        }
         else if (sign == "√")
-            return Math.Sqrt(a);
+            return Math.Sqrt(numbers.Pop());
         else if (sign == "sin")
-            return Math.Sin(a);
+            return Math.Sin(numbers.Pop());
         else if (sign == "cos")
-            return Math.Cos(a);
+            return Math.Cos(numbers.Pop());
         else if (sign == "tan")
-            return Math.Tan(a);
+            return Math.Tan(numbers.Pop());
         else if (sign == "ln")
         {
+            var a = numbers.Pop();
             if (a <= 0) throw new ArgumentException();
             return Math.Log(a);
         }
         else if (sign == "log")
+        {
+            var a = numbers.Pop();
+            if (a <= 0) throw new ArgumentException();
             return Math.Log10(a);
+        }
+        else if(sign == "min")
+            return Math.Min(numbers.Pop(), numbers.Pop());
+        else if(sign == "max")
+            return Math.Max(numbers.Pop(), numbers.Pop());
+        else if (sign == "%")
+        {
+            var a = numbers.Pop();
+            var b = numbers.Pop();
+            return b % a;
+        }
+            
+        else if (sign == "//")
+        {
+            var a = numbers.Pop();
+            var b = numbers.Pop();
+            return (int)b / a;
+        }
+        else if (sign == "trunc")
+            return Math.Truncate(numbers.Pop());
         return 0;
     }
-
-    public static void Main(string[] args)
-    {
-        Console.OutputEncoding = Encoding.GetEncoding(1251);
-
-
-        try
-        {
-            while (true)
-            {
-                Console.WriteLine("Введите математическое выражение:");
-                string infix = Console.ReadLine();
-                string postfix = InfixToPostfix(infix);
-                double result = EvaluatePostfix(postfix);
-                Console.WriteLine($"Результат: {result}");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка: {ex.Message}");
-            Console.ReadLine();
-        }
-    }
-}*/
-    /*public static double EvalRPN(string[] rpn)
-    {
-        var stack = new MyStack<double>();
-
-        foreach (string token in rpn)
-        {
-            if (double.TryParse(token, out double num))
-            {
-                stack.Push(num);
-            }
-            else
-            {
-                double right = stack.Pop();
-                double left = stack.IsEmpty() ? 0 : stack.Pop();
-
-                switch (token)
-                {
-                    case "+": stack.Push(left + right); break;
-                    case "-": stack.Push(left - right); break;
-                    case "*": stack.Push(left * right); break;
-                    case "/":
-                        if (right == 0) throw new DivideByZeroException();
-                        stack.Push(left / right);
-                        break;
-                    case "^": stack.Push(Math.Pow(left, right)); break;
-                    case "√": stack.Push(Math.Sqrt(right)); break;
-                    case "sin": stack.Push(Math.Sin(right)); break;
-                    case "cos": stack.Push(Math.Cos(right)); break;
-                    case "tan": stack.Push(Math.Tan(right)); break;
-                    case "ln":
-                        if (right <= 0) throw new ArgumentException();
-                        stack.Push(Math.Log(right));
-                        break;
-                    case "log": stack.Push(Math.Log10(right)); break;
-                    default: throw new InvalidOperationException($"Unknown op: {token}");
-                }
-            }
-        }*/
-    
+}
+   
