@@ -197,7 +197,7 @@ public class MyPriorityQueue<T>
             if (!toRetain.Contains(queue[i]))
             {
                 RemoveAt(i);
-                i--; // Adjust index after removal
+                i--; -
             }
         }
     }
