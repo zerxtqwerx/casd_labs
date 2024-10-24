@@ -10,7 +10,7 @@ public class Heap<T> where T : IComparable<T>
     private int size;
     private readonly bool isMaxHeap;
 
-    //1
+    //1//
     public Heap(T[] array, bool isMaxHeap = true)
     {
         this.isMaxHeap = isMaxHeap;
