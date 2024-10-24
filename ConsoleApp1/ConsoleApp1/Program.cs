@@ -89,7 +89,31 @@ public class Calculator
                     double a = 0;
                     double.TryParse(token, NumberStyles.Any, CultureInfo.InvariantCulture, out a);
                     numbers.Push(a);
-                    continue;
+                }
+                else
+                {
+                    bool flag = true;
+                    foreach (char c in token)
+                    {
+                        if (!char.IsLetter(c))
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag)
+                    {
+                        Console.WriteLine("Введите " + token + ": ");
+                        try
+                        {
+                            string n = Console.ReadLine();
+                            numbers.Push(Convert.ToDouble(n));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(token + " не число.");
+                        }
+                    }
                 }
             }
             catch 
