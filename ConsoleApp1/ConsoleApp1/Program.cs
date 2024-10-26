@@ -51,6 +51,7 @@ ADD/REMOVE НомерЗаявки Приоритет НомерШага
                     }
                     Request maxRequest = queue.Element();
                     queue.Remove(maxRequest);
+                    writer.WriteLine("REMOVE " + maxRequest.Number + " " + maxRequest.Priority + " " + maxRequest.Step);
                 }
                 System.TimeSpan time = new TimeSpan();
                 while (!queue.IsEmpty())
