@@ -1,0 +1,12 @@
+Hello World
+This is a test string with some digits 12345
+Another line with 67890 digits
+A short one
+Just another line
+Line with exactly ten digits 1234567890
+Line with too many digits 112233445566778899
+This line has no digits
+Yet another string
+Python is awesome
+This string has lots of spaces          too many         spaces
+More lines to check
