@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace Sort
 {
-    public class SortingAlgorithms
+    public class SortingAlgorithms<T>
     {
 
-        public static void BubbleSort(int[] array)
+        public static void BubbleSort<T>(T[] array, Comparison<T> comparer)
         {
-            int temp;
+            T temp;
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = 0; j < array.Length - i - 1; j++)
                 {
-                    if (array[j] > array[j + 1])
+                    if (comparer(array[i], array[i - 1]) > 0)
                     {
                         temp = array[j];
                         array[j] = array[j + 1];
@@ -25,7 +25,7 @@ namespace Sort
             }
         }
 
-        public static void ShakerSort(int[] array)
+        public static void ShakerSort(T[] array, Comparison<T> comparer)
         {
             bool swapped = true;
             int start = 0;
@@ -36,9 +36,9 @@ namespace Sort
                 swapped = false;
                 for (int i = start; i < end - 1; ++i)
                 {
-                    if (array[i] > array[i + 1])
+                    if (comparer(array[i], array[i + 1]) > 0)
                     {
-                        int temp = array[i];
+                        T temp = array[i];
                         array[i] = array[i + 1];
                         array[i + 1] = temp;
                         swapped = true;
@@ -50,9 +50,9 @@ namespace Sort
                 end = end - 1;
                 for (int i = end - 1; i >= start; i--)
                 {
-                    if (array[i] > array[i + 1])
+                    if (comparer(array[i], array[i + 1]) > 0)
                     {
-                        int temp = array[i];
+                        T temp = array[i];
                         array[i] = array[i + 1];
                         array[i + 1] = temp;
                         swapped = true;
@@ -62,7 +62,7 @@ namespace Sort
             }
         }
 
-        public static void CombSort(int[] array)
+        public static void CombSort(T[] array, Comparison<T> comparer)
         {
             int length = array.Length;
             int gap = length;
@@ -74,9 +74,9 @@ namespace Sort
                 swapped = false;
                 for (int i = 0; i < length - gap; i++)
                 {
-                    if (array[i] > array[i + gap])
+                    if (comparer(array[i], array[i + gap]) > 0)
                     {
-                        int temp = array[i];
+                        T temp = array[i];
                         array[i] = array[i + gap];
                         array[i + gap] = temp;
 
@@ -96,14 +96,14 @@ namespace Sort
             return gap;
         }
 
-        public static void InsertionSort(int[] array)
+        public static void InsertionSort(T[] array, Comparison<T> comparer)
         {
             int n = array.Length;
             for (int i = 1; i < n; ++i)
             {
-                int key = array[i];
+                T key = array[i];
                 int j = i - 1;
-                while (j >= 0 && array[j] > key)
+                while (j >= 0 && comparer(array[j], key) > 0)
                 {
                     array[j + 1] = array[j];
                     j = j - 1;
@@ -112,9 +112,10 @@ namespace Sort
             }
         }
 
-        public static void ShellSort(int[] array)
+        public static void ShellSort(T[] array, Comparison<T> comparer)
         {
-            int i, j, inc, temp;
+            int i, j, inc;
+            T temp;
             inc = 3;
             while (inc > 0)
             {
@@ -122,7 +123,7 @@ namespace Sort
                 {
                     j = i;
                     temp = array[i];
-                    while ((j >= inc) && (array[j - inc] > temp))
+                    while ((j >= inc) && comparer(array[j - inc], temp) > 0)
                     {
                         array[j] = array[j - inc];
                         j = j - inc;
@@ -138,13 +139,13 @@ namespace Sort
             }
         }
 
-        class Node
+        class Node<T>
         {
-            public int Data;
+            public T Data;
             public Node Left;
             public Node Right;
 
-            public Node(int data)
+            public Node(T data)
             {
                 Data = data;
                 Left = null;
@@ -154,27 +155,27 @@ namespace Sort
 
         class BinarySearchTree
         {
-            public Node Root;
+            public Node<T> Root;
 
             public BinarySearchTree()
             {
                 Root = null;
             }
 
-            public void Insert(int data)
+            public void Insert(T data, Comparison<T> comparer)
             {
-                Root = InsertRec(Root, data);
+                Root = InsertRec(Root, data, comparer);
             }
 
-            private Node InsertRec(Node root, int data)
+            private Node<T> InsertRec(Node<T> root, T data, Comparison<T> comparer)
             {
                 if (root == null)
                 {
-                    root = new Node(data);
+                    root = new Node<T>(data);
                     return root;
                 }
 
-                if (data < root.Data)
+                if (comparer(data,root.Data) < 0)
                     root.Left = InsertRec(root.Left, data);
                 else
                     root.Right = InsertRec(root.Right, data);
@@ -182,7 +183,7 @@ namespace Sort
                 return root;
             }
 
-            public void InOrderTraversal(Node root, List<int> result)
+            public void InOrderTraversal(Node<T> root, List<T> result)
             {
                 if (root != null)
                 {
@@ -193,14 +194,14 @@ namespace Sort
             }
         }
 
-        public static void TreeSort(int[] array)
+        public static void TreeSort(T[] array, Comparison<T> comparer)
         {
             BinarySearchTree bst = new BinarySearchTree();
-            foreach (int value in array)
+            foreach (T value in array)
             {
-                bst.Insert(value);
+                bst.Insert(value, comparer);
             }
-            List<int> sortedList = new List<int>();
+            List<T> sortedList = new List<T>();
             bst.InOrderTraversal(bst.Root, sortedList);
             for (int i = 0; i < array.Length; i++)
             {
@@ -208,7 +209,7 @@ namespace Sort
             }
         }
 
-        public static void GnomeSort(int[] array)
+        public static void GnomeSort(T[] array, Comparison<T> comparer)
         {
             if (array.Length <= 1)
             {
@@ -223,13 +224,13 @@ namespace Sort
                 {
                     index++;
                 }
-                else if (array[index] >= array[index - 1])
+                else if (comparer(array[index], array[index - 1]) >= 0)
                 {
                     index++;
                 }
                 else
                 {
-                    int temp = array[index];
+                    T temp = array[index];
                     array[index] = array[index - 1];
                     array[index - 1] = temp;
                     index--;
@@ -237,97 +238,97 @@ namespace Sort
             }
         }
 
-        public static void SelectionSort(int[] array)
+        public static void SelectionSort(T[] array, Comparison<T> comparer)
         {
             int n = array.Length;
             for (int i = 0; i < n - 1; i++)
             {
                 int min_idx = i;
                 for (int j = i + 1; j < n; j++)
-                    if (array[j] < array[min_idx])
+                    if (comparer(array[j], array[min_idx]) < 0)
                         min_idx = j;
-                int temp = array[min_idx];
+                T temp = array[min_idx];
                 array[min_idx] = array[i];
                 array[i] = temp;
             }
         }
 
-        public static void HeapSort(int[] array)
+        public static void HeapSort(T[] array, Comparison<T> comparer)
         {
             int N = array.Length;
             for (int i = N / 2 - 1; i >= 0; i--)
-                Heapify(array, N, i);
+                Heapify(array, N, i, comparer);
             for (int i = N - 1; i > 0; i--)
             {
-                int temp = array[0];
+                T temp = array[0];
                 array[0] = array[i];
                 array[i] = temp;
-                Heapify(array, i, 0);
+                Heapify(array, i, 0, comparer);
             }
         }
 
-        static void Heapify(int[] array, int N, int i)
+        static void Heapify(T[] array, int N, int i, Comparison<T> comparer)
         {
             int largest = i;
             int l = 2 * i + 1;
             int r = 2 * i + 2;
-            if (l < N && array[l] > array[largest])
+            if (l < N && (comparer(array[l], array[largest]) > 0))
                 largest = l;
-            if (r < N && array[r] > array[largest])
+            if (r < N && comparer(array[r], array[largest]) > 0)
                 largest = r;
             if (largest != i)
             {
-                int swap = array[i];
+                T swap = array[i];
                 array[i] = array[largest];
                 array[largest] = swap;
-                Heapify(array, N, largest);
+                Heapify(array, N, largest, comparer);
             }
         }
 
-        public static void QuickSort(int[] array, int left, int right)
+        public static void QuickSort(T[] array, int left, int right, Comparison<T> comparer)
         {
             if (left < right)
             {
-                int pivotIndex = Partition(array, left, right);
-                QuickSort(array, left, pivotIndex - 1);
-                QuickSort(array, pivotIndex + 1, right);
+                int pivotIndex = Partition(array, left, right, comparer);
+                QuickSort(array, left, pivotIndex - 1, comparer);
+                QuickSort(array, pivotIndex + 1, right, comparer);
             }
         }
 
-        public static void QuickSort(int[] array)
+        public static void QuickSort(T[] array, Comparison<T> comparer)
         {
-            QuickSort(array, 0, array.Length - 1);
+            QuickSort(array, 0, array.Length - 1, comparer);
         }
 
-        static int Partition(int[] array, int left, int right)
+        static int Partition(T[] array, int left, int right, Comparison<T> comparer)
         {
-            int pivot = array[right];
+            T pivot = array[right];
             int i = left - 1;
 
             for (int j = left; j < right; j++)
             {
-                if (array[j] <= pivot)
+                if (comparer(array[j],pivot) <= 0)
                 {
                     i++;
-                    int temp = array[i];
+                    T temp = array[i];
                     array[i] = array[j];
                     array[j] = temp;
                 }
             }
 
-            int temp1 = array[i + 1];
+            T temp1 = array[i + 1];
             array[i + 1] = array[right];
             array[right] = temp1;
 
             return i + 1;
         }
 
-        static void Merge(int[] array, int l, int m, int r)
+        static void Merge(T[] array, int l, int m, int r, Comparison<T> comparer)
         {
             int n1 = m - l + 1;
             int n2 = r - m;
-            int[] L = new int[n1];
-            int[] R = new int[n2];
+            T[] L = new T[n1];
+            T[] R = new T[n2];
             int i, j;
             for (i = 0; i < n1; ++i)
                 L[i] = array[l + i];
@@ -338,7 +339,7 @@ namespace Sort
             int k = l;
             while (i < n1 && j < n2)
             {
-                if (L[i] <= R[j])
+                if (comparer(L[i], R[j]) <= 0)
                 {
                     array[k] = L[i];
                     i++;
@@ -364,37 +365,37 @@ namespace Sort
             }
         }
 
-        public static void MergeSort(int[] array, int l, int r)
+        public static void MergeSort(T[] array, int l, int r, Comparison<T> comparer)
         {
             if (l < r)
             {
                 int m = l + (r - l) / 2;
-                MergeSort(array, l, m);
-                MergeSort(array, m + 1, r);
-                Merge(array, l, m, r);
+                MergeSort(array, l, m, comparer);
+                MergeSort(array, m + 1, r, comparer);
+                Merge(array, l, m, r, comparer);
             }
         }
 
-        public static void MergeSort(int[] array)
+        public static void MergeSort(T[] array, Comparison<T> comparer)
         {
-            MergeSort(array, 0, array.Length - 1);
+            MergeSort(array, 0, array.Length - 1, comparer);
         }
 
-        public static void CountingSort(int[] array)
+        public static void CountingSort(T[] array, Comparison<T> comparer)
         {
             if (array.Length == 0) return;
 
-            int FindMaxValue(int[] arr)
+            T FindMaxValue(T[] arr)
             {
                 if (arr.Length == 0)
                 {
                     throw new ArgumentException("Array is empty.");
                 }
 
-                int maxValue = arr[0];
+                T maxValue = arr[0];
                 for (int i = 1; i < arr.Length; i++)
                 {
-                    if (arr[i] > maxValue)
+                    if (comparer(arr[i], maxValue) > 0)
                     {
                         maxValue = arr[i];
                     }
@@ -403,7 +404,7 @@ namespace Sort
                 return maxValue;
             }
 
-            int k;
+            T k;
             try
             {
                 k = FindMaxValue(array);
@@ -413,10 +414,11 @@ namespace Sort
                 return;
             }
 
-            var count = new int[k + 1];
+            var count = new int[Convert.ToInt32(k) + 1];
             for (var i = 0; i < array.Length; i++)
             {
-                count[array[i]]++;
+                count[Convert.ToInt32(array[i])]++;
+
             }
 
             var index = 0;
@@ -430,24 +432,24 @@ namespace Sort
             }
         }
 
-        public static void BucketSort(int[] array, int bucketCount)
+        public static void BucketSort(T[] array, int bucketCount, Comparison<T> comparer)
         {
             if (array.Length <= 1)
             {
                 return;
             }
 
-            var buckets = new List<int>[bucketCount];
+            var buckets = new List<T>[bucketCount];
             for (int i = 0; i < bucketCount; i++)
-                buckets[i] = new List<int>();
+                buckets[i] = new List<T>();
 
             var min = double.MaxValue;
             var max = -double.MaxValue;
 
             for (int i = 0; i < array.Length; i++)
             {
-                min = Math.Min(min, array[i]);
-                max = Math.Max(max, array[i]);
+                min = Math.Min(min, Convert.ToSByte(array[i]));
+                max = Math.Max(max, Convert.ToSByte(array[i]));
             }
 
             for (int i = 0; i < array.Length; i++)
@@ -459,7 +461,7 @@ namespace Sort
                 }
                 else
                 {
-                    idx = Math.Min(bucketCount - 1, (int)(bucketCount * (array[i] - min) / (max - min)));
+                    idx = Math.Min(bucketCount - 1, (int)(bucketCount * (Convert.ToDouble(array[i]) - min) / (max - min)));
                 }
                 buckets[idx].Add(array[i]);
             }
@@ -476,21 +478,21 @@ namespace Sort
             }
         }
 
-        public static void BucketSort(int[] array)
+        public static void BucketSort(T[] array, Comparison<T> comparer)
         {
-            BucketSort(array, array.Length + 1);
+            BucketSort(array, array.Length + 1, comparer);
         }
-        public static void RadiaxSort(int[] arr)
+        public static void RadiaxSort(T[] arr, Comparison<T> comparer)
         {
             int i, j;
-            int[] tmp = new int[arr.Length];
-            for (int shift = 31; shift > -1; --shift)
+            T[] tmp = new T[arr.Length];
+            for (T shift = (T)(object)31; comparer(shift,(T)(object)-1 ) > 0; shift--)
             {
                 j = 0;
                 for (i = 0; i < arr.Length; ++i)
                 {
                     bool move = (arr[i] << shift) >= 0;
-                    if (shift == 0 ? !move : move)
+                    if (comparer(shift, (T)(object)0) == 0 ? !move : move)
                         arr[i - j] = arr[i];
                     else
                         tmp[j++] = arr[i];
@@ -499,44 +501,44 @@ namespace Sort
             }
         }
 
-        static void BitSeqSort(int[] arr, int left, int right, bool inv)
+        static void BitSeqSort(T[] arr, int left, int right, bool inv, Comparison<T> comparer)
         {
             if (right - left <= 1) return;
             int mid = left + (right - left) / 2;
 
             for (int i = left, j = mid; i < mid && j < right; i++, j++)
             {
-                if (inv ^ (arr[i] > arr[j]))
+                if (inv ^ (comparer(arr[i], arr[j]) > 0))
                 {
                     Swap(ref arr[i], ref arr[j]);
                 }
             }
 
-            BitSeqSort(arr, left, mid, inv);
-            BitSeqSort(arr, mid, right, inv);
+            BitSeqSort(arr, left, mid, inv, comparer);
+            BitSeqSort(arr, mid, right, inv, comparer);
         }
 
-        static void MakeBitonic(int[] arr, int left, int right)
+        static void MakeBitonic(T[] arr, int left, int right, Comparison<T> comparer)
         {
             if (right - left <= 1) return;
             int mid = left + (right - left) / 2;
 
-            MakeBitonic(arr, left, mid);
-            BitSeqSort(arr, left, mid, false);
-            MakeBitonic(arr, mid, right);
-            BitSeqSort(arr, mid, right, true);
+            MakeBitonic(arr, left, mid, comparer);
+            BitSeqSort(arr, left, mid, false, comparer);
+            MakeBitonic(arr, mid, right, comparer);
+            BitSeqSort(arr, mid, right, true, comparer);
         }
 
-        public static void BitonicSort(int[] arr)
+        public static void BitonicSort(T[] arr, Comparison<T> comparer)
         {
             if (arr.Length == 0) return;
             int n = 1;
-            int inf = arr.Max() + 1;
+            T inf = arr.Max() + (T)(object)1;
             int length = arr.Length;
 
             while (n < length) n *= 2;
 
-            int[] temp = new int[n];
+            T[] temp = new T[n];
             Array.Copy(arr, temp, length);
 
             for (int i = length; i < n; i++)
@@ -544,15 +546,15 @@ namespace Sort
                 temp[i] = inf;
             }
 
-            MakeBitonic(temp, 0, n);
-            BitSeqSort(temp, 0, n, false);
+            MakeBitonic(temp, 0, n, comparer);
+            BitSeqSort(temp, 0, n, false, comparer);
 
             Array.Copy(temp, arr, length);
         }
 
-        static void Swap(ref int a, ref int b)
+        static void Swap(ref T a, ref T b)
         {
-            int temp = a;
+            T temp = a;
             a = b;
             b = temp;
         }
