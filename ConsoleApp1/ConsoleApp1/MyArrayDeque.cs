@@ -1,50 +1,60 @@
 ﻿using System;
+using System.Xml;
 
-public class MyArrayDeque<T>
+public class MyLinkedList<T>
 {
-    private T[] elements;
-    private int head;
-    private int tail;
+    private Node<T> first;
+    private Node<T> last;
     private int size;
 
-    private const int DEFAULT_CAPACITY = 16;
+    private class Node<T>
+    {
+        public T Value;
+        public Node<T> Next;
+        public Node<T> Previous;
+
+        public Node(T value)
+        {
+            Value = value;
+            Next = null;
+            Previous = null;
+        }
+    }
 
     //1
-    public MyArrayDeque()
+    public MyLinkedList()
     {
-        elements = new T[DEFAULT_CAPACITY];
-        head = 0;
-        tail = 0;
+        first = null;
+        last = null;
         size = 0;
     }
     //2
-    public MyArrayDeque(T[] a)
+    public MyLinkedList(T[] a)
     {
-        elements = new T[Math.Max(a.Length, DEFAULT_CAPACITY)];
-        Array.Copy(a, 0, elements, head, a.Length);
-        tail = a.Length;
-        size = a.Length;
+        for(int i = 0; i < a.Length; i++)
+        {
+            Add(a[i]);
+        }
     }
     //3
-    public MyArrayDeque(int numElements)
-    {
-        if (numElements <= 0)
-            throw new ArgumentException("Capacity must be greater than zero.");
-
-        elements = new T[numElements];
-        head = 0;
-        tail = 0;
-        size = 0;
-    }
-    //4
     public void Add(T e)
     {
-        EnsureCapacity(size + 1);
-        elements[tail] = e;
-        tail = (tail + 1) % elements.Length;
+        Node<T> newNode = new Node<T>(e);
+
+        if (size == 0)
+        {
+            first = newNode;
+            last = newNode;
+        }
+        else
+        {
+            last.Next = newNode;
+            newNode.Previous = last;
+            last = newNode;
+        }
         size++;
     }
-    //5
+    //4
     public void AddAll(T[] a)
     {
         foreach (T item in a)
@@ -52,26 +62,34 @@ public class MyArrayDeque<T>
             Add(item);
         }
     }
-    //6
+    //5
     public void Clear()
     {
-        head = 0;
-        tail = 0;
+        Node<T> node = first;
+        while(node != null)
+        {
+            Node<T> temp = node;
+            node = node.Next;
+            temp.Value = (T)(default);
+            temp.Next = null;
+            temp.Previous = null;
+        }
+        first = null;
+        last = null;
         size = 0;
     }
-    //7
+    //6
     public bool Contains(object o)
     {
-        for (int i = 0; i < size; i++)
-        {
-            if (elements[(head + i) % elements.Length]?.Equals(o) == true)
-            {
-                return true;
-            }
+        Node<T> node = first;
+        while (node != null)
+        { 
+            if(Equals(node.Value, o)) return true;
+            node = node.Next;
         }
         return false;
     }
-    //8
+    //7
     public bool ContainsAll(T[] a)
     {
         foreach (T item in a)
@@ -81,26 +99,36 @@ public class MyArrayDeque<T>
         }
         return true;
     }
-    //9
+    //8
     public bool IsEmpty()
     {
         return size == 0;
     }
-    //10
+    //9
     public bool Remove(object o)
     {
-        for (int i = 0; i < size; i++)
-        {
-            int index = (head + i) % elements.Length;
-            if (elements[index]?.Equals(o) == true)
+        Node<T> node = first;
+        bool flag = false;
+        while (node != null)
+        { 
+            if(Equals(node.Value, o))
             {
-                RemoveAt(index);
-                return true;
+                Node<T> newNode = node.Next;
+                newNode.Next = node.Next.Next;
+                newNode.Previous = node.Previous;
+
+                node.Value = (T)(default);
+                node.Next = null;
+                node.Previous = null;
+                node = newNode;
+                flag = true;
             }
         }
+        if (flag)
+            return true;
         return false;
     }
-    //11
+    //10
     public void RemoveAll(T[] a)
     {
         foreach (T item in a)
@@ -108,42 +136,47 @@ public class MyArrayDeque<T>
             Remove(item);
         }
     }
-    //12
+    //11
     public void RetainAll(T[] a)
     {
-        for (int i = size - 1; i >= 0; i--)
+        Node<T> node = first;
+        while (node != null)
         {
-            if (!Array.Exists(a, e => e.Equals(elements[(head + i) % elements.Length])))
+            if (!Contains(node.Value))
             {
-                RemoveAt((head + i) % elements.Length);
+                Remove(node.Value);
             }
         }
     }
-    //13
+    //12
     public int Size()
     {
         return size;
     }
-    //14
+    //13
     public T[] ToArray()
     {
+        Node<T> node = first;
         T[] newArray = new T[size];
         for (int i = 0; i < size; i++)
         {
-            newArray[i] = elements[(head + i) % elements.Length];
+            newArray[i] = node.Value;
+            node = node.Next;
         }
         return newArray;
     }
-    //15
+    //14
     public T[] ToArray(T[] a)
     {
+        Node<T> node = first;
         if (a == null || a.Length < size)
         {
             return ToArray();
         }
         for (int i = 0; i < size; i++)
         {
-            a[i] = elements[(head + i) % elements.Length];
+            a[i] = node.Value;
+            node = node.Next;
         }
         if (a.Length > size)
         {
@@ -151,14 +184,113 @@ public class MyArrayDeque<T>
         }
         return a;
     }
-    //16
+    //15
+    public void Add(int index, T e)
+    {
+        Node<T> node = first;
+        for(int i = 0; i < size; i++)
+        {
+            if(i == index)
+            {
+                Node<T> newNode = new Node<T>(e);
+                newNode.Next = node;
+                newNode.Previous = node.Previous;
+                size++;
+            }
+            node = node.Next;
+        }
+    }
+
+    //16 
+    public void AddAll(int index, T[] a)
+    {
+        for(int i = 0; i < a.Length; i++)
+        {
+            Add(index + i, a[i]);
+        }
+    }
+
+    //17
+    public T Get(int index)
+    {
+        Node<T> node = first;
+        for (int i = 0; i < size; i++)
+        {
+            if (i == index) { return node.Value; }
+            node = node.Next;
+        }
+        return default(T);
+    }
+
+    //18
+    public int IndexOf(object o)
+    {
+        Node<T> node = first;
+        for (int index = 0; index < size; index++)
+        {
+            if(Equals(o, node.Value)) 
+                return index;
+            node = node.Next;
+        }
+        return -1;
+    }
+
+    //19
+    public int LastIndexOf(object o)
+    {
+        Node<T> node = first;
+        for (int index = size; index != 0; index--)
+        {
+            if (Equals(o, node.Value))
+                return index;
+            node = node.Next;
+        }
+        return -1;
+    }
+
+    //20 
+    public T Remove(int index)
+    {
+        T t = Get(index);
+        Remove(t);
+        return t;
+    }
+
+    //21
+    public void Set(int index, T e)
+    {
+        Node<T> node = first;
+        for (int i = 0; i < size; i++)
+        {
+            if (i == index)
+            {
+                node.Value = e;
+                break;
+            }
+            node = node.Next;
+        }
+    }
+
+    //22
+    public MyLinkedList<T> SubList(int fromIndex, int toIndex)
+    {
+        MyLinkedList<T> newList = new MyLinkedList<T>();
+        for(int i = fromIndex; i < toIndex; i++)
+        {
+            T t = Get(i);
+            newList.Add(t);
+        }
+        return newList;
+    }
+
+    //23
     public T Element()
     {
         if (IsEmpty())
             throw new InvalidOperationException("Deque is empty.");
-        return elements[head];
+        return first.Value;
     }
-    //17
+    //24
     public bool Offer(T obj)
     {
         try
@@ -171,167 +303,127 @@ public class MyArrayDeque<T>
             return false;
         }
     }
-    //18
+    //25
     public T Peek()
     {
-        return IsEmpty() ? default(T) : elements[head];
+        return IsEmpty() ? (T)(default) : Element();
     }
-    //19
+    //26
     public T Poll()
     {
         if (IsEmpty())
             return default(T);
-        T item = elements[head];
-        head = (head + 1) % elements.Length;
-        size--;
+        T item = Element();
+        Remove(item);
         return item;
     }
-    //20
+
+    //27
     public void AddFirst(T obj)
     {
-        EnsureCapacity(size + 1);
-        head = (head - 1 + elements.Length) % elements.Length;
-        elements[head] = obj;
-        size++;
+        Add(0, obj);
     }
-    //21
+    //28
     public void AddLast(T obj)
     {
         Add(obj);
     }
-    //22
+    //29
     public T GetFirst()
     {
         return Element();
     }
-    //23
+    //30
     public T GetLast()
     {
         if (IsEmpty())
             throw new InvalidOperationException("Deque is empty.");
-        return elements[(tail - 1 + elements.Length) % elements.Length];
+        return Get(size - 1);
     }
-    //24
+    //31
     public bool OfferFirst(T obj)
     {
-        if (size >= elements.Length) return false;
-        AddFirst(obj);
-        return true;
+        try
+        {
+            AddFirst(obj);
+            return true;
+        }
+        catch { return false; }
     }
-    //25
+    //32
     public bool OfferLast(T obj)
     {
         return Offer(obj);
     }
-    //26
+    //33
     public T Pop()
     {
         return Poll();
     }
-    //27 
+    //34
     public void Push(T obj)
     {
-        EnsureCapacity(size + 1); 
-        head = (head - 1 + elements.Length) % elements.Length; 
-        elements[head] = obj; 
-        size++; 
+        AddFirst(obj); 
     }
 
-    //28
+    //35
     public T PeekFirst()
     {
         return Peek();
     }
-    //29
+    //36
     public T PeekLast()
     {
         if (IsEmpty())
             return default(T);
-        return elements[(tail - 1 + elements.Length) % elements.Length];
+        return GetLast();
     }
-    //30
+    //37
     public T PollFirst()
     {
         return Poll();
     }
-    //31
+    //38
     public T PollLast()
     {
         if (IsEmpty())
             return default(T);
-
-        tail = (tail - 1 + elements.Length) % elements.Length;
-        T item = elements[tail];
-        elements[tail] = default(T); 
-        size--;
+        T item = Get(size - 1);
+        Remove(size - 1);
         return item;
     }
-    //32
+    //39
     public T RemoveLast()
     {
         return PollLast();
     }
-    //33
+    //40
     public T RemoveFirst()
     {
         return Poll();
     }
-    //34
+    //41
     public bool RemoveLastOccurrence(object obj)
     {
-        for (int i = size - 1; i >= 0; i--)
+        try
         {
-            int index = (head + i) % elements.Length;
-            if (elements[index]?.Equals(obj) == true)
-            {
-                RemoveAt(index);
-                return true;
-            }
+            int index = LastIndexOf(obj);
+            Remove(index);
+            return true;
         }
-        return false;
+        
+        catch { return false; }
     }
-    //35
+    //42
     public bool RemoveFirstOccurrence(object obj)
     {
-        for (int i = 0; i < size; i++)
+        try
         {
-            int index = (head + i) % elements.Length;
-            if (elements[index]?.Equals(obj) == true)
-            {
-                RemoveAt(index);
-                return true;
-            }
+            int index = IndexOf(obj);
+            Remove(index);
+            return true;
         }
-        return false;
-    }
 
-    private void EnsureCapacity(int minCapacity)
-    {
-        if (minCapacity > elements.Length)
-        {
-            int newCapacity = elements.Length * 2;
-            T[] newElements = new T[newCapacity];
-            for (int i = 0; i < size; i++)
-            {
-                newElements[i] = elements[(head + i) % elements.Length];
-            }
-            elements = newElements;
-            head = 0;
-            tail = size;
-        }
-    }
-
-    private void RemoveAt(int index)
-    {
-        int actualIndex = (head + index) % elements.Length;
-        for (int i = index; i < size - 1; i++)
-        {
-            int nextIndex = (head + i + 1) % elements.Length;
-            elements[actualIndex] = elements[nextIndex];
-            actualIndex = nextIndex;
-        }
-        elements[(head + size - 1) % elements.Length] = default(T);
-        size--;
-        tail = (tail - 1 + elements.Length) % elements.Length;
+        catch { return false; }
     }
 }
