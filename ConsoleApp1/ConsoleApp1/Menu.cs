@@ -3,31 +3,41 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Test;
 
 namespace ConsoleApp1
 {
+    public class NonZeroComparer : IComparer<int>
+    {
+        public int Compare(int x, int y)
+        {
+            if (x > y) return 1;
+            else if (x == y) return 0;
+            else if (x < y) return -1;
+            return -1;
+        }
+    }
     public partial class Menu : Form
     {
+        
         bool firstCombox = false;
         bool secondCombox = false;
         bool genArrButton = false;
-        Test.Test test;
+        Comparison<int> comparer = (x, y) => new NonZeroComparer().Compare(x, y);
+
+        Test.Test<int> test;
         public Menu()
         {
-            test = new Test.Test();
+            test = new Test.Test<int>();
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if(firstCombox && secondCombox && genArrButton)
-            {               
-                test.StartTest();
+            {
+                
+                test.StartTest(comparer);
                 Close();
             }
         }
@@ -49,7 +59,7 @@ namespace ConsoleApp1
                 if (comboBox2.SelectedIndex != null && comboBox1.SelectedIndex != null)
                 {
 
-                    test.InitialTest(comboBox1.SelectedIndex, comboBox2.SelectedIndex);
+                    test.InitialTest(comboBox1.SelectedIndex, comboBox2.SelectedIndex, 0, 1000, comparer);
                     genArrButton = true;
                 }                
             }

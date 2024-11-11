@@ -142,8 +142,8 @@ namespace Sort
         class Node<T>
         {
             public T Data;
-            public Node Left;
-            public Node Right;
+            public Node<T> Left;
+            public Node<T> Right;
 
             public Node(T data)
             {
@@ -176,9 +176,9 @@ namespace Sort
                 }
 
                 if (comparer(data,root.Data) < 0)
-                    root.Left = InsertRec(root.Left, data);
+                    root.Left = InsertRec(root.Left, data, comparer);
                 else
-                    root.Right = InsertRec(root.Right, data);
+                    root.Right = InsertRec(root.Right, data, comparer);
 
                 return root;
             }
@@ -426,7 +426,7 @@ namespace Sort
             {
                 for (var j = 0; j < count[i]; j++)
                 {
-                    array[index] = i;
+                    //array[index] = i;
                     index++;
                 }
             }
@@ -486,19 +486,19 @@ namespace Sort
         {
             int i, j;
             T[] tmp = new T[arr.Length];
-            for (T shift = (T)(object)31; comparer(shift,(T)(object)-1 ) > 0; shift--)
+            /*for (T shift = (T)(object)31; comparer(shift,(T)(object)-1 ) > 0;) shift--)
             {
                 j = 0;
                 for (i = 0; i < arr.Length; ++i)
                 {
-                    bool move = (arr[i] << shift) >= 0;
-                    if (comparer(shift, (T)(object)0) == 0 ? !move : move)
+                    bool move = (Convert.ToInt32(arr[i]) << Convert.ToInt32(shift)) >= 0;
+                    if (comparer(T shift = T(object), (T)(object)0) == 0 ? !move : move)
                         arr[i - j] = arr[i];
                     else
                         tmp[j++] = arr[i];
                 }
                 Array.Copy(tmp, 0, arr, arr.Length - j, j);
-            }
+            }*/
         }
 
         static void BitSeqSort(T[] arr, int left, int right, bool inv, Comparison<T> comparer)
@@ -533,7 +533,8 @@ namespace Sort
         {
             if (arr.Length == 0) return;
             int n = 1;
-            T inf = arr.Max() + (T)(object)1;
+
+            int inf = Convert.ToInt32(arr.Max()) + 1;
             int length = arr.Length;
 
             while (n < length) n *= 2;
@@ -543,7 +544,7 @@ namespace Sort
 
             for (int i = length; i < n; i++)
             {
-                temp[i] = inf;
+                //temp[i] = inf;
             }
 
             MakeBitonic(temp, 0, n, comparer);
