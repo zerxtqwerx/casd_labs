@@ -55,7 +55,7 @@ public class Program
                 i++;
             }
         }
-
+        //
         Console.WriteLine("записанная в двунаправленной очереди строка: ");
         while (!deque.IsEmpty())
         {
