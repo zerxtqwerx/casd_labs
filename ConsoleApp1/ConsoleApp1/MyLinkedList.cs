@@ -113,15 +113,28 @@ public class MyLinkedList<T>
         { 
             if(Equals(node.Value, o))
             {
+                
                 Node<T> newNode = node.Next;
-                newNode.Next = node.Next.Next;
-                newNode.Previous = node.Previous;
+                //newNode.Next = node.Next.Next;
+                //newNode.Previous = node.Previous;
+
+                node.Previous.Next = node.Next;
+                node.Next.Previous = node.Previous;
 
                 node.Value = (T)(default);
                 node.Next = null;
                 node.Previous = null;
                 node = newNode;
                 flag = true;
+
+                if (IndexOf(o) == 0)
+                {
+                    first = newNode;
+                }
+                if(LastIndexOf(o) == size - 1)
+                {
+                    last = node;
+                }
             }
         }
         if (flag)
@@ -195,6 +208,7 @@ public class MyLinkedList<T>
                 Node<T> newNode = new Node<T>(e);
                 newNode.Next = node;
                 newNode.Previous = node.Previous;
+                last = newNode;
                 size++;
             }
             node = node.Next;
@@ -238,12 +252,12 @@ public class MyLinkedList<T>
     //19
     public int LastIndexOf(object o)
     {
-        Node<T> node = first;
-        for (int index = size; index != 0; index--)
+        Node<T> node = last;
+        for (int index = size -1; index != 0; index--)
         {
             if (Equals(o, node.Value))
                 return index;
-            node = node.Next;
+            node = node.Previous;
         }
         return -1;
     }
