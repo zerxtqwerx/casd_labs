@@ -11,6 +11,8 @@ namespace ConsoleApp1
     {
         MyArrayList<int> arrayList;
         MyLinkedList<int> linkedList;
+        int minSize = 100;
+        int maxSize = 100000 + 1;
 
         public Test()
         {
@@ -18,13 +20,13 @@ namespace ConsoleApp1
             linkedList = new MyLinkedList<int>();
         }
 
-        public long[] TestAddArray()
+        public double[] TestAddArray()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -34,7 +36,8 @@ namespace ConsoleApp1
                         arrayList.Add(1);
                     }
                     sw.Stop();
-                    arrayList.Clear();
+                    if (a != 19)
+                        linkedList.Clear();
                     time[index] = sw.ElapsedMilliseconds;
                 }
                 time[index] /= 20;
@@ -42,13 +45,13 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestAddLinked()
+        public double[] TestAddLinked()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -58,7 +61,8 @@ namespace ConsoleApp1
                         linkedList.Add(1);
                     }
                     sw.Stop();
-                    linkedList.Clear();
+                    if(a != 19)
+                        linkedList.Clear();
                     time[index] = sw.ElapsedMilliseconds;
                 }
                 time[index] /= 20;
@@ -67,13 +71,13 @@ namespace ConsoleApp1
             return time;
         }
 
-        public long[] TestGetArray()
+        public double[] TestGetArray()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -90,13 +94,13 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestGetLinked()
+        public double[] TestGetLinked()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -113,13 +117,13 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestSetArray()
+        public double[] TestSetArray()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -136,13 +140,13 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestSetLinked()
+        public double[] TestSetLinked()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -159,14 +163,14 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestAddValueArray()
+        public double[] TestAddValueArray()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
             arrayList.Clear();
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -176,7 +180,8 @@ namespace ConsoleApp1
                         arrayList.Add(i, 3);
                     }
                     sw.Stop();
-                    arrayList.Clear();
+                    if (a != 19)
+                        linkedList.Clear();
                     time[index] = sw.ElapsedMilliseconds;
                 }
                 time[index] /= 20;
@@ -184,14 +189,14 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestAddValueLinked()
+        public double[] TestAddValueLinked()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
             linkedList.Clear();
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -201,7 +206,8 @@ namespace ConsoleApp1
                         linkedList.Add(i, 3);
                     }
                     sw.Stop();
-                    linkedList.Clear();
+                    if (a != 19)
+                        linkedList.Clear();
                     time[index] = sw.ElapsedMilliseconds;
                 }
                 time[index] /= 20;
@@ -210,13 +216,13 @@ namespace ConsoleApp1
             return time;
         }
 
-        public long[] TestRemoveArray()
+        public double[] TestRemoveArray()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
@@ -233,16 +239,17 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public long[] TestRemoveLinked()
+        public double[] TestRemoveLinked()
         {
-            long[] time = new long[4];
+            double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
-            for (int n = 100000; n < 100000001; n *= 10)
+            for (int n = minSize; n < maxSize; n *= 10)
             {
                 for (int a = 0; a != 20; a++)
                 {
+                    
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
