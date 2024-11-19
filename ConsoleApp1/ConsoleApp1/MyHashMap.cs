@@ -126,7 +126,7 @@ namespace ConsoleApp1
                 current = current.Next;
             }
 
-            throw new KeyNotFoundException("Ключ не найден.");
+            return default(V);
         }
 
         //9

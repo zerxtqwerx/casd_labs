@@ -1,0 +1,4 @@
+<html><h1>Hello World</h1><title>My Title</title></html>
+<div><div>Some content</div></div>
+<p>Paragraph content</p><P>Another paragraph</P>
+<CustomTag>test</CustomTag><customtag>test</customtag>
