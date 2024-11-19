@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -10,37 +11,40 @@ namespace ConsoleApp1
     {
         static void Main()
         {
-            Console.OutputEncoding = Encoding.GetEncoding(1251);
-            string filePath = "input.txt";
+           
+            MyHashMap<string, int> tagCounter = new MyHashMap<string, int>();
 
-            MyHashMap<string, int> tags = new MyHashMap<string, int>();
 
-            try
+            Regex tagPattern = new Regex(@"<\s*\/?\s*([a-zA-Z][\w]*)\s*>", RegexOptions.IgnoreCase);
+
+
+            string[] lines = File.ReadAllLines("input.txt");
+
+            foreach (var line in lines)
             {
-                foreach (var line in File.ReadLines(filePath))
+                MatchCollection matches = tagPattern.Matches(line);
+                foreach (Match match in matches)
                 {
-                    var matches = Regex.Matches(line, @"<\s*\/?\s*([a-zA-Z][a-zA-Z0-9]*)\s*>");
-                    foreach (Match match in matches)
+                    string tag = match.Groups[1].Value.ToLower();
+
+                    if (tagCounter.ContainsKey(tag))
                     {
-                        string tag = match.Value.Trim('<', '>', ' ');
-                        tags.Put(match.Groups[1].Value.Trim(), tags.Get(match.Groups[1].Value.Trim())+1);
-                        /*if (!tags.ContainsKey(match.Groups[1].Value.Trim()))
-                            tags.Add(match.Groups[1].Value.Trim());*/
+                        int count = tagCounter.Get(tag);
+                        tagCounter.Put(tag, count + 1);
+                    }
+                    else
+                    {
+                        tagCounter.Put(tag, 1);
                     }
                 }
-
-
-                for (int i = 0; i < tags.Size(); i++)
-                {
-                    Console.WriteLine(tags.Get(i));
-                }
-                Console.ReadLine();
             }
-            catch (Exception ex)
+
+            Console.WriteLine("Количество вхождений тегов:");
+            foreach (var entry in tagCounter.EntrySet())
             {
-                Console.WriteLine($"Произошла ошибка: {ex.Message}");
-                Console.ReadLine();
+                Console.WriteLine($"{entry.Key}: {entry.Value}");
             }
+            Console.ReadKey();
         }
     }
 }
