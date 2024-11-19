@@ -1,0 +1,9 @@
+Double => variable3(30)
+Float => variable2(20.5)
+Int => variable1(10)
+Double => variable4(40.0)
+
+Некорректные определения:
+Некорректное определение: int variable1 = 15;   
+Некорректное определение: string invalidVariable = 25; 
+Некорректное определение: float variable2 = 25.0; 
