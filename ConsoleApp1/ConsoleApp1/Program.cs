@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 public enum VariableType
 {
@@ -30,6 +32,7 @@ class Program
 {
     static void Main()
     {
+        Console.OutputEncoding = Encoding.GetEncoding(1251);
         string path = "input.txt";
         MyHashMap<string, VariableDefinition> variableMap = new MyHashMap<string, VariableDefinition>();
 
@@ -77,7 +80,15 @@ class Program
             }
             else
             {
-                errorMessages.Add($"Некорректное определение: {line}");
+                Regex regex1 = new Regex(@"^(int|float|double)\s+([a-zA-Z_][\w]*)\s*=\s*(\d+([.]\d+)?);?$", RegexOptions.Multiline);
+                Match match1 = regex1.Match(line);
+                string name1 = match.Groups[2].Value;
+                if (match1.Success)
+                {
+                    duplicates.Add(name1);
+                }
+                else
+                    errorMessages.Add($"Некорректное определение: {line}");
             }
         }
 
