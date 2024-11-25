@@ -1,9 +1,12 @@
 Double => variable3(30)
 Float => variable2(20.5)
-Int => variable1(10)
+Int => variable1(15)
 Double => variable4(40.0)
 
+Переопределенные переменные:
+int variable1 = 10;   
+float variable2 = 25.0; 
+
 Некорректные определения:
-Некорректное определение: int variable1 = 15;   
-Некорректное определение: string invalidVariable = 25; 
-Некорректное определение: float variable2 = 25.0; 
+string invalidVariable = 25; 
+slkjfsdlk

@@ -1,7 +1,8 @@
-int variable1 = 10;
-int variable1 = 15;   
+int variable1 = 15;
+int variable1 = 10;   
 float variable2 = 20.5;
 double variable3 = 30;
 string invalidVariable = 25; 
 double variable4 = 40.0;
 float variable2 = 25.0; 
+slkjfsdlk
