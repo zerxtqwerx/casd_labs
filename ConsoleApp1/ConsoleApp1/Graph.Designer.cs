@@ -35,11 +35,9 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Add (value)",
-            "Get (value)",
-            "Set (index, value)",
-            "Add (index, value)",
-            "Remove (index)"});
+            "Put (Key, Value)",
+            "Get (Key)",
+            "Remove (Key)"});
             this.comboBox1.Location = new System.Drawing.Point(9, 10);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";

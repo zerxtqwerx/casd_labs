@@ -46,55 +46,39 @@ namespace ConsoleApp1
             {
                 case 0:
                     {
-                        Y1 = test.TestAddArray();
-                        Y2 = test.TestAddLinked();
+                        Y1 = test.TestPutHashMap();
+                        Y2 = test.TestPutTreeMap();
                         color1 = Color.PowderBlue;
                         color2 = Color.PaleGreen;
                         break;
                     }
                 case 1:
                     {
-                        Y1 = test.TestGetArray();
-                        Y2 = test.TestGetLinked();
+                        Y1 = test.TestGetHashMap();
+                        Y2 = test.TestGetTreeMap();
                         color1 = Color.DarkBlue;
                         color2 = Color.HotPink;
                         break;
                     }
                 case 2:
                     {
-                        Y1 = test.TestSetArray();
-                        Y2 = test.TestSetLinked();
-                        color1 = Color.Khaki;
-                        color2 = Color.Lime;
-                        break;
-                    }
-                case 3:
-                    {
-                        Y1 = test.TestAddValueArray();
-                        Y2 = test.TestAddValueLinked();
-                        color1 = Color.LightYellow;
-                        color2 = Color.Magenta;
-                        break;
-                    }
-                case 4:
-                    {
-                        Y1 = test.TestRemoveArray();
-                        Y2 = test.TestRemoveLinked();
+                        Y1 = test.TestRemoveHashMap();
+                        Y2 = test.TestRemoveTreeMap();
                         color1 = Color.LightCyan;
                         color2 = Color.MediumBlue;
                         break;
                     }
                 default:
                     {
-                        Y1 = test.TestAddArray();
-                        Y2 = test.TestAddLinked();
-                        color1 = Color.Cornsilk;
-                        color2 = Color.Coral;
+                        Y1 = test.TestPutHashMap();
+                        Y2 = test.TestPutTreeMap();
+                        color1 = Color.PowderBlue;
+                        color2 = Color.PaleGreen;
                         break;
                     }
             }
-            graphPane.AddCurve("MyArrayList", X, Y1, color1);
-            graphPane.AddCurve("MyLinkedList", X, Y2, color2);
+            graphPane.AddCurve("MyHashMap", X, Y1, color1);
+            graphPane.AddCurve("MyTreeMap", X, Y2, color2);
 
             InitializeComponent();
             zedGraphControl.AxisChange();

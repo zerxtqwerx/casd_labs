@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace ConsoleApp1
 {
     internal class Test
     {
-        MyArrayList<int> arrayList;
-        MyLinkedList<int> linkedList;
+        MyHashMap<int, int> hashMap;
+        MyTreeMap<int, int> treeMap;
         int minSize = 100;
         int maxSize = 100000 + 1;
 
         public Test()
         {
-            arrayList = new MyArrayList<int>();
-            linkedList = new MyLinkedList<int>();
+            hashMap = new MyHashMap<int, int>();
+            treeMap = new MyTreeMap<int, int>();
         }
-
-        public double[] TestAddArray()
+        //get, put, remove
+        public double[] TestPutHashMap()
         {
             double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
@@ -33,11 +28,11 @@ namespace ConsoleApp1
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
-                        arrayList.Add(1);
+                        hashMap.Put(i, i);
                     }
                     sw.Stop();
                     if (a != 19)
-                        linkedList.Clear();
+                        hashMap.Clear();
                     time[index] = sw.ElapsedMilliseconds;
                 }
                 time[index] /= 20;
@@ -45,7 +40,7 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public double[] TestAddLinked()
+        public double[] TestPutTreeMap()
         {
             double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
@@ -58,11 +53,11 @@ namespace ConsoleApp1
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
-                        linkedList.Add(1);
+                        treeMap.Put(i, i);
                     }
                     sw.Stop();
                     if(a != 19)
-                        linkedList.Clear();
+                        treeMap.Clear();
                     time[index] = sw.ElapsedMilliseconds;
                 }
                 time[index] /= 20;
@@ -71,7 +66,7 @@ namespace ConsoleApp1
             return time;
         }
 
-        public double[] TestGetArray()
+        public double[] TestGetHashMap()
         {
             double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
@@ -84,7 +79,7 @@ namespace ConsoleApp1
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
-                        arrayList.Get(i);
+                        hashMap.Get(i);
                     }
                     sw.Stop();
                     time[index] = sw.ElapsedMilliseconds;
@@ -94,7 +89,7 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public double[] TestGetLinked()
+        public double[] TestGetTreeMap()
         {
             double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
@@ -107,7 +102,7 @@ namespace ConsoleApp1
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
-                        linkedList.Add(i);
+                        treeMap.Get(i);
                     }
                     sw.Stop();
                     time[index] = sw.ElapsedMilliseconds;
@@ -117,7 +112,8 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public double[] TestSetArray()
+
+        public double[] TestRemoveHashMap()
         {
             double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
@@ -130,7 +126,7 @@ namespace ConsoleApp1
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
-                        arrayList.Set(i, 2);
+                        hashMap.Remove(i);
                     }
                     sw.Stop();
                     time[index] = sw.ElapsedMilliseconds;
@@ -140,106 +136,7 @@ namespace ConsoleApp1
             }
             return time;
         }
-        public double[] TestSetLinked()
-        {
-            double[] time = new double[4];
-            Stopwatch sw = new Stopwatch();
-            int index = 0;
-
-            for (int n = minSize; n < maxSize; n *= 10)
-            {
-                for (int a = 0; a != 20; a++)
-                {
-                    sw.Start();
-                    for (int i = 0; i != n; i++)
-                    {
-                        linkedList.Set(i, 2);
-                    }
-                    sw.Stop();
-                    time[index] = sw.ElapsedMilliseconds;
-                }
-                time[index] /= 20;
-                index++;
-            }
-            return time;
-        }
-        public double[] TestAddValueArray()
-        {
-            double[] time = new double[4];
-            Stopwatch sw = new Stopwatch();
-            int index = 0;
-            arrayList.Clear();
-
-            for (int n = minSize; n < maxSize; n *= 10)
-            {
-                for (int a = 0; a != 20; a++)
-                {
-                    sw.Start();
-                    for (int i = 0; i != n; i++)
-                    {
-                        arrayList.Add(i, 3);
-                    }
-                    sw.Stop();
-                    if (a != 19)
-                        linkedList.Clear();
-                    time[index] = sw.ElapsedMilliseconds;
-                }
-                time[index] /= 20;
-                index++;
-            }
-            return time;
-        }
-        public double[] TestAddValueLinked()
-        {
-            double[] time = new double[4];
-            Stopwatch sw = new Stopwatch();
-            int index = 0;
-            linkedList.Clear();
-
-            for (int n = minSize; n < maxSize; n *= 10)
-            {
-                for (int a = 0; a != 20; a++)
-                {
-                    sw.Start();
-                    for (int i = 0; i != n; i++)
-                    {
-                        linkedList.Add(i, 3);
-                    }
-                    sw.Stop();
-                    if (a != 19)
-                        linkedList.Clear();
-                    time[index] = sw.ElapsedMilliseconds;
-                }
-                time[index] /= 20;
-                index++;
-            }
-            return time;
-        }
-
-        public double[] TestRemoveArray()
-        {
-            double[] time = new double[4];
-            Stopwatch sw = new Stopwatch();
-            int index = 0;
-
-            for (int n = minSize; n < maxSize; n *= 10)
-            {
-                for (int a = 0; a != 20; a++)
-                {
-                    sw.Start();
-                    for (int i = 0; i != n; i++)
-                    {
-                        arrayList.Remove(i);
-                    }
-                    sw.Stop();
-                    time[index] = sw.ElapsedMilliseconds;
-                }
-                time[index] /= 20;
-                index++;
-            }
-            return time;
-        }
-        public double[] TestRemoveLinked()
+        public double[] TestRemoveTreeMap()
         {
             double[] time = new double[4];
             Stopwatch sw = new Stopwatch();
@@ -253,7 +150,7 @@ namespace ConsoleApp1
                     sw.Start();
                     for (int i = 0; i != n; i++)
                     {
-                        linkedList.Remove(i);
+                        treeMap.Remove(i);
                     }
                     sw.Stop();
                     time[index] = sw.ElapsedMilliseconds;
