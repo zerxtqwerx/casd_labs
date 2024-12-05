@@ -9,15 +9,19 @@ public class MyHashSet<T>
     private int initialCapacity;
     private float loadFactor;
 
+    //1
     public MyHashSet() : this(16, 0.75f) { }
 
+    //2
     public MyHashSet(T[] array) : this(16, 0.75f)
     {
         AddAll(array);
     }
 
+    //3
     public MyHashSet(int initialCapacity) : this(initialCapacity, 0.75f) { }
 
+    //4
     public MyHashSet(int initialCapacity, float loadFactor)
     {
         if (initialCapacity < 0) throw new ArgumentOutOfRangeException(nameof(initialCapacity));
@@ -27,7 +31,7 @@ public class MyHashSet<T>
         this.loadFactor = loadFactor;
         map = new Dictionary<T, object>(initialCapacity);
     }
-
+    //5
     public void Add(T e)
     {
         if (e == null) throw new ArgumentNullException(nameof(e));
@@ -36,7 +40,7 @@ public class MyHashSet<T>
             map[e] = DummyValue;
         }
     }
-
+    //6
     public void AddAll(T[] array)
     {
         if (array == null) throw new ArgumentNullException(nameof(array));
@@ -45,18 +49,18 @@ public class MyHashSet<T>
             Add(item);
         }
     }
-
+    //7
     public void Clear()
     {
         map.Clear();
     }
-
+    //8
     public bool Contains(object o)
     {
         if (o == null) throw new ArgumentNullException(nameof(o));
         return map.ContainsKey((T)o);
     }
-
+    //9
     public bool ContainsAll(T[] array)
     {
         if (array == null) throw new ArgumentNullException(nameof(array));
@@ -66,18 +70,18 @@ public class MyHashSet<T>
         }
         return true;
     }
-
+    //10
     public bool IsEmpty()
     {
         return map.Count == 0;
     }
-
+    //11
     public bool Remove(object o)
     {
         if (o == null) throw new ArgumentNullException(nameof(o));
         return map.Remove((T)o);
     }
-
+    //12
     public void RemoveAll(T[] array)
     {
         if (array == null) throw new ArgumentNullException(nameof(array));
@@ -86,7 +90,7 @@ public class MyHashSet<T>
             Remove(item);
         }
     }
-
+    //13
     public void RetainAll(T[] array)
     {
         if (array == null) throw new ArgumentNullException(nameof(array));
@@ -99,19 +103,19 @@ public class MyHashSet<T>
             }
         }
     }
-
+    //14
     public int Size()
     {
         return map.Count;
     }
-
+    //15
     public T[] ToArray()
     {
         T[] array = new T[Size()];
         map.Keys.CopyTo(array, 0);
         return array;
     }
-
+    //16
     public T[] ToArray(T[] a)
     {
         if (a == null) return ToArray();
@@ -122,7 +126,7 @@ public class MyHashSet<T>
         map.Keys.CopyTo(a, 0);
         return a;
     }
-
+    //17
     public T First()
     {
         if (IsEmpty()) throw new InvalidOperationException("Set is empty");
@@ -132,7 +136,7 @@ public class MyHashSet<T>
             return enumerator.Current;
         }
     }
-
+    //18
     public T Last()
     {
         if (IsEmpty()) throw new InvalidOperationException("Set is empty");
@@ -146,7 +150,7 @@ public class MyHashSet<T>
             return lastElement;
         }
     }
-
+    //19
     public MyHashSet<T> SubSet(T fromElement, T toElement)
     {
         var subset = new MyHashSet<T>();
@@ -159,7 +163,7 @@ public class MyHashSet<T>
         }
         return subset;
     }
-
+    //20
     public MyHashSet<T> HeadSet(T toElement)
     {
         var headSet = new MyHashSet<T>();
@@ -172,7 +176,7 @@ public class MyHashSet<T>
         }
         return headSet;
     }
-
+    //21
     public MyHashSet<T> TailSet(T fromElement)
     {
         var tailSet = new MyHashSet<T>();
