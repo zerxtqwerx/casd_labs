@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class MyHashSet<T>
 {
-    private Dictionary<T, object> map;
+    private MyHashMap<T, object> map;
     private static readonly object DummyValue = new object();
     private int initialCapacity;
     private float loadFactor;
@@ -29,7 +30,7 @@ public class MyHashSet<T>
 
         this.initialCapacity = initialCapacity;
         this.loadFactor = loadFactor;
-        map = new Dictionary<T, object>(initialCapacity);
+        map = new MyHashMap<T, object>(initialCapacity);
     }
     //5
     public void Add(T e)
@@ -37,7 +38,7 @@ public class MyHashSet<T>
         if (e == null) throw new ArgumentNullException(nameof(e));
         if (!map.ContainsKey(e))
         {
-            map[e] = DummyValue;
+            map.Put(e, DummyValue);
         }
     }
     //6
@@ -73,13 +74,18 @@ public class MyHashSet<T>
     //10
     public bool IsEmpty()
     {
-        return map.Count == 0;
+        return map.Size() == 0;
     }
     //11
     public bool Remove(object o)
     {
         if (o == null) throw new ArgumentNullException(nameof(o));
-        return map.Remove((T)o);
+        try
+        {
+            map.Remove((T)o);
+            return true;
+        }
+        catch { return false; }
     }
     //12
     public void RemoveAll(T[] array)
@@ -95,7 +101,7 @@ public class MyHashSet<T>
     {
         if (array == null) throw new ArgumentNullException(nameof(array));
         var toRetain = new HashSet<T>(array);
-        foreach (var key in new List<T>(map.Keys))
+        foreach (var key in new List<T>(map.KeySet()))
         {
             if (!toRetain.Contains(key))
             {
@@ -106,14 +112,14 @@ public class MyHashSet<T>
     //14
     public int Size()
     {
-        return map.Count;
+        return map.Size();
     }
     //15
     public T[] ToArray()
     {
-        T[] array = new T[Size()];
-        map.Keys.CopyTo(array, 0);
-        return array;
+        HashSet<T> set = new HashSet<T>();
+        set = map.KeySet();
+        return set.ToArray();
     }
     //16
     public T[] ToArray(T[] a)
@@ -123,14 +129,16 @@ public class MyHashSet<T>
         {
             a = new T[Size()];
         }
-        map.Keys.CopyTo(a, 0);
+        HashSet<T> set = new HashSet<T>();
+        set = map.KeySet();
+        a = set.ToArray();
         return a;
     }
     //17
     public T First()
     {
         if (IsEmpty()) throw new InvalidOperationException("Set is empty");
-        using (var enumerator = map.Keys.GetEnumerator())
+        using (var enumerator = map.KeySet().GetEnumerator())
         {
             enumerator.MoveNext();
             return enumerator.Current;
@@ -140,7 +148,7 @@ public class MyHashSet<T>
     public T Last()
     {
         if (IsEmpty()) throw new InvalidOperationException("Set is empty");
-        using (var enumerator = map.Keys.GetEnumerator())
+        using (var enumerator = map.KeySet().GetEnumerator())
         {
             T lastElement = default(T);
             while (enumerator.MoveNext())
@@ -154,7 +162,7 @@ public class MyHashSet<T>
     public MyHashSet<T> SubSet(T fromElement, T toElement)
     {
         var subset = new MyHashSet<T>();
-        foreach (var item in map.Keys)
+        foreach (var item in map.KeySet())
         {
             if (Comparer<T>.Default.Compare(item, fromElement) >= 0 && Comparer<T>.Default.Compare(item, toElement) < 0)
             {
@@ -167,7 +175,7 @@ public class MyHashSet<T>
     public MyHashSet<T> HeadSet(T toElement)
     {
         var headSet = new MyHashSet<T>();
-        foreach (var item in map.Keys)
+        foreach (var item in map.KeySet())
         {
             if (Comparer<T>.Default.Compare(item, toElement) < 0)
             {
@@ -180,7 +188,7 @@ public class MyHashSet<T>
     public MyHashSet<T> TailSet(T fromElement)
     {
         var tailSet = new MyHashSet<T>();
-        foreach (var item in map.Keys)
+        foreach (var item in map.KeySet())
         {
             if (Comparer<T>.Default.Compare(item, fromElement) >= 0)
             {
