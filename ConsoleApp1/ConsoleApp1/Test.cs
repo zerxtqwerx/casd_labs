@@ -6,8 +6,8 @@ namespace ConsoleApp1
     {
         MyHashMap<int, int> hashMap;
         MyTreeMap<int, int> treeMap;
-        int minSize = 100;
-        int maxSize = 100000 + 1;
+        int minSize = 10;
+        int maxSize = 1000 + 1;
 
         public Test()
         {
@@ -17,7 +17,7 @@ namespace ConsoleApp1
         //get, put, remove
         public double[] TestPutHashMap()
         {
-            double[] time = new double[4];
+            double[] time = new double[3];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
@@ -42,7 +42,7 @@ namespace ConsoleApp1
         }
         public double[] TestPutTreeMap()
         {
-            double[] time = new double[4];
+            double[] time = new double[3];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
@@ -68,7 +68,7 @@ namespace ConsoleApp1
 
         public double[] TestGetHashMap()
         {
-            double[] time = new double[4];
+            double[] time = new double[3];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
@@ -91,7 +91,7 @@ namespace ConsoleApp1
         }
         public double[] TestGetTreeMap()
         {
-            double[] time = new double[4];
+            double[] time = new double[3];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
@@ -115,7 +115,7 @@ namespace ConsoleApp1
 
         public double[] TestRemoveHashMap()
         {
-            double[] time = new double[4];
+            double[] time = new double[3];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 
@@ -138,7 +138,7 @@ namespace ConsoleApp1
         }
         public double[] TestRemoveTreeMap()
         {
-            double[] time = new double[4];
+            double[] time = new double[3];
             Stopwatch sw = new Stopwatch();
             int index = 0;
 

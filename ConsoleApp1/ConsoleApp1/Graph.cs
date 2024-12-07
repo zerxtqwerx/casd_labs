@@ -38,9 +38,9 @@ namespace ConsoleApp1
             graphPane.Title.Text = name;
             graphPane.XAxis.Title.Text = "Ось X";
             graphPane.YAxis.Title.Text = "Ось Y";
-            double[] X = { 100, 1000, 10000, 100000};
-            double[] Y1 = new double[4];
-            double[] Y2 = new double[4];
+            double[] X = { 10, 1000, 10000};
+            double[] Y1 = new double[3];
+            double[] Y2 = new double[3];
 
             switch (functionIndex)
             {
