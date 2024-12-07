@@ -48,8 +48,8 @@ namespace ConsoleApp1
                     {
                         Y1 = test.TestPutHashMap();
                         Y2 = test.TestPutTreeMap();
-                        color1 = Color.PowderBlue;
-                        color2 = Color.PaleGreen;
+                        color1 = Color.Cyan;
+                        color2 = Color.DarkViolet;
                         break;
                     }
                 case 1:

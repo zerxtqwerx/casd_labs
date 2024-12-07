@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\mytreemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\mytreemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\mytreemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -54,8 +54,7 @@
               "ViewState": "AQIAAH4AAAAAAAAAAAAAAIwAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T08:49:07.915Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "ConsoleApp1\\MyTreeMap.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAArwAwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T20:33:18.797Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T20:33:18.797Z"
             },
             {
               "$type": "Document",
@@ -103,8 +101,7 @@
               "RelativeToolTip": "ConsoleApp1\\Graph.Designer.cs",
               "ViewState": "AQIAACYAAAAAAAAAAAAgwC0AAABwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T16:21:33.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T16:21:33.469Z"
             },
             {
               "$type": "Document",
@@ -114,7 +111,7 @@
               "RelativeDocumentMoniker": "ConsoleApp1\\Graph.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Graph.cs",
               "RelativeToolTip": "ConsoleApp1\\Graph.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAAFgAAAAAAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADMAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T09:11:19.068Z",
               "EditorCaption": ""
@@ -128,8 +125,7 @@
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Graph.cs [Design]",
               "RelativeToolTip": "ConsoleApp1\\Graph.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T09:09:41.709Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-13T09:09:41.709Z"
             },
             {
               "$type": "Document",
