@@ -4,7 +4,8 @@ using System.Collections;
 
 namespace ConsoleApp1
 {
-    internal class MyTreeMap<K, V>: IEnumerable<KeyValuePair<K, V>>
+
+    public class MyTreeMap<K, V>: IEnumerable<KeyValuePair<K, V>>
     {
         private class Node
         {
@@ -425,5 +426,14 @@ namespace ConsoleApp1
                 return Min(node.Left);
             return node;
         }
+        public MyTreeMap<K, V> Copy()
+        {
+            MyTreeMap<K, V> map = new MyTreeMap<K, V>(this.comparator);
+            map.root = this.root;
+            map.size = this.size;
+            return map;
+        }
     }
+
+    
 }

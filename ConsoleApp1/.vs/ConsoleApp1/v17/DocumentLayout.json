@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\mytreeset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\mytreeset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\mytreemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\mytreemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,27 +27,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MyTreeSet.cs",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyTreeSet.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\MyTreeSet.cs",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyTreeSet.cs",
+              "RelativeToolTip": "ConsoleApp1\\MyTreeSet.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIAwwBcAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T15:48:14.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MyTreeMap.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyTreeMap.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\MyTreeMap.cs",
               "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyTreeMap.cs",
               "RelativeToolTip": "ConsoleApp1\\MyTreeMap.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAALMAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T08:22:30.195Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
               "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T19:06:58.545Z"
+              "WhenOpened": "2024-09-10T19:06:58.545Z",
+              "EditorCaption": ""
             }
           ]
         }
