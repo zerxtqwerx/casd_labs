@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\myhashset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myhashset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\stringcomparer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\stringcomparer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "StringComparer.cs",
+              "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\StringComparer.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\StringComparer.cs",
+              "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\StringComparer.cs",
+              "RelativeToolTip": "ConsoleApp1\\StringComparer.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T16:07:18.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MyHashSet.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyHashSet.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\MyHashSet.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyHashSet.cs",
               "RelativeToolTip": "ConsoleApp1\\MyHashSet.cs",
-              "ViewState": "AQIAAIQAAAAAAAAAAAAAADYAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-05T15:27:21.994Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
               "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAkwBQAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T19:06:58.545Z"
+              "WhenOpened": "2024-09-10T19:06:58.545Z",
+              "EditorCaption": ""
             }
           ]
         }

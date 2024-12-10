@@ -1,0 +1,3 @@
+Hello world! This is a test.
+Another test, with some words: Hello, AnD, and another one.
+A mix of different Case Words.
