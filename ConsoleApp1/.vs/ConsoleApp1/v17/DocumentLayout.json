@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\",
+  "WorkspaceRootPath": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\myiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\greoh\\documents\\github\\casd_labs\\consoleapp1\\consoleapp1\\mylinkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\mylinkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\mylinkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\myarraylist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myarraylist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\myiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\myenumerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myenumerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +30,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MyEnumerator.cs",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyEnumerator.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\MyEnumerator.cs",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyEnumerator.cs",
+              "RelativeToolTip": "ConsoleApp1\\MyEnumerator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T15:36:36.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "MyArrayList.cs",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyArrayList.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\MyArrayList.cs",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyArrayList.cs",
+              "RelativeToolTip": "ConsoleApp1\\MyArrayList.cs",
+              "ViewState": "AQIAAAsBAAAAAAAAAAAAABwBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-16T15:17:08.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MyLinkedList.cs",
-              "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyLinkedList.cs",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyLinkedList.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\MyLinkedList.cs",
-              "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyLinkedList.cs",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyLinkedList.cs",
               "RelativeToolTip": "ConsoleApp1\\MyLinkedList.cs",
-              "ViewState": "AQIAAKcBAAAAAAAAAAAAAJYBAAAUAAAA",
+              "ViewState": "AQIAALABAAAAAAAAAAAAAL4BAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-11T07:30:47.291Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MyIterator.cs",
-              "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyIterator.cs",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyIterator.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\MyIterator.cs",
-              "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyIterator.cs",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyIterator.cs",
               "RelativeToolTip": "ConsoleApp1\\MyIterator.cs",
-              "ViewState": "AQIAAIcAAAAAAAAAAAAqwJwAAAAAAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAA0AAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-10T16:29:21.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\greoh\\Documents\\GitHub\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-10T19:06:58.545Z",
               "EditorCaption": ""

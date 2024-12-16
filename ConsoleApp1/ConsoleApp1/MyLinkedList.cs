@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp1;
+using System;
 using System.Xml;
 
 public class MyLinkedList<T>
@@ -439,5 +440,9 @@ public class MyLinkedList<T>
         }
 
         catch { return false; }
+    }
+    public MyIterator<T> Iterator()
+    {
+        return new MyItr(this);
     }
 }

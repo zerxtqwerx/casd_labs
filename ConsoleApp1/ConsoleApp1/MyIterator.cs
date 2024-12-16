@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
@@ -14,8 +10,8 @@ namespace ConsoleApp1
         T Next();
         T Previous();
 
-        T NextIndex();
-        T PreviousIndex();
+        int NextIndex();
+        int PreviousIndex();
 
         void Remove();
 
@@ -25,132 +21,86 @@ namespace ConsoleApp1
 
     public class MyItr<T> : MyIterator<T>
     {
-        /*private class Cursor<T>
+        private MyArrayList<T> list;
+        private int cursor = -1;
+
+        public MyItr(MyArrayList<T> list)
         {
-            public T Value { get; set; }
-            public Cursor<T> Previous { get; set; }
-            public Cursor<T> Next { get; set; }
-            public int Index;
-
-            public Cursor()
-            {
-                Value = default(T);
-                Previous = null;
-                Next = null;
-                Index = 0;
-            }
-
-            public void Add(T value, Cursor<T> previous = null, Cursor<T> next = null)
-            {
-                Cursor<T> current = new Cursor<T>();
-                current.Value = value;
-                current.Previous = previous;
-                current.Previous.Next = current;
-                current.Next.Previous = current;
-                if(previous != null)
-                    Index = current.Previous.Index + 1;
-            }
-
-            public void Remove(Cursor<T> start, Cursor<T> removing)
-            {
-                try
-                {
-                    Cursor<T> cursor = start;
-                    while(cursor != removing)
-                    {
-
-                    }
-                }
-            }
-        }*/
-        //Cursor<T> cursor;
-        MyLinkedList<T> cursor;
-        int Index;
+            this.list = list;
+        }
 
         public bool HasNext()
         {
-            try
-            {
-                return cursor.Get(Index + 1) != null;
-            }
-            catch
-            { return false; }
+            return cursor + 1 < list.Size(); 
         }
 
         public T Next()
         {
-            try
-            {
-                return cursor.Get(Index + 1);
-            }
-            catch { return default(T); }
+            if (!HasNext())
+                throw new InvalidOperationException("Нет следующего элемента.");
+
+            cursor++;
+            return list.Get(cursor);
         }
 
         public bool HasPrevious()
         {
-            try
-            {
-                return cursor.Get(Index - 1) != null;
-            }
-            catch
-            { return false; }
+            return cursor > 0; 
         }
 
         public T Previous()
         {
-            try
-            {
-                return cursor.Get(Index - 1);
-            }
-            catch { return default(T); }
+            if (!HasPrevious())
+                throw new InvalidOperationException("Нет предыдущего элемента.");
+
+            cursor--;
+            return list.Get(cursor);
         }
 
         public int NextIndex()
         {
-            try
-            {
-                if ((Index + 1) <= Convert.ToInt32(cursor.GetLast()))
-                    return Index + 1;
-                return -1;
-            }
-            catch { return -1; }
+            return cursor + 1;
         }
+
         public int PreviousIndex()
         {
-            try
-            {
-                if ((Index - 1) >= 0)
-                    return Index - 1;
-                return -1;
-            }
-            catch { return -1; }
+            return cursor - 1; 
         }
 
         public void Remove()
         {
-            try
+            if (cursor < 0 || cursor >= list.Size())
+                throw new InvalidOperationException("Индекс вне массива.");
+
+
+            for (int i = cursor; i < list.Size() - 1; i++)
             {
-                cursor.Remove(Index);
+                list.Set(i, list.Get(i + 1));
             }
-            catch(Exception e) { Console.WriteLine(e); }
+            cursor--;
         }
 
         public void Set(T element)
         {
-            try
-            {
-                int index = cursor.IndexOf(element);
-                cursor.Set(index, element);
-            }
-            catch (Exception e) { Console.WriteLine(e); }
+            if (cursor < 0 || cursor >= list.Size())
+                throw new InvalidOperationException("Индекс вне массива.");
+
+            list.Set(cursor, element);
         }
+
         public void Add(T element)
         {
-            try
+
+            list.Add(default); 
+            for (int i = list.Size() - 1; i > cursor; i--)
             {
-                cursor.Add(NextIndex(), element);
+                list.Set(i, list.Get(i - 1)); 
             }
-            catch (Exception e) { Console.WriteLine(e); }
+            list.Set(cursor + 1, element); 
+            cursor++; 
         }
+
+
     }
+
 }
