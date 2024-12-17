@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
@@ -279,11 +281,39 @@ namespace ConsoleApp1
             return sublist;
         }
 
-        public MyIterator<T> Iterator()
+        //Iterator
+        public MyIterator2<T> ListIterator()
         {
-            return new MyItr(this);
+            return new MyItr2<T>(this);
+        }
+
+        public MyIterator2<T> ListIterator(int index)
+        {
+            MyIterator2<T> iterator = ListIterator();
+            try
+            {
+                while (iterator.NextIndex() != index + 1)
+                    iterator.Next();
+                return iterator;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(Convert.ToString(e));
+            }
+        }
+
+
+        //Action
+        public void Subscribe(MyItr2<T> instance)
+        {
+            instance.OnDataChanged += UpdateData;
+        }
+        private void UpdateData(MyArrayList<T> newData)
+        {
+            T[] newArray = newData.ToArray();
+            elementData = newArray;
         }
     }
 
 }
-
+   

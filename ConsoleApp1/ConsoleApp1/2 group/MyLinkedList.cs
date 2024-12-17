@@ -441,8 +441,23 @@ public class MyLinkedList<T>
 
         catch { return false; }
     }
-    public MyIterator<T> Iterator()
+    public MyIterator2<T> ListIterator()
     {
-        return new MyItr(this);
+        return new MyItrLinkedList<T>(this);
+    }
+
+    public MyIterator2<T> ListIterator(int index)
+    {
+        MyIterator2<T> iterator = ListIterator();
+        try
+        {
+            while (iterator.NextIndex() != index + 1)
+                iterator.Next();
+            return iterator;
+        }
+        catch (Exception e)
+        {
+            throw new Exception(Convert.ToString(e));
+        }
     }
 }

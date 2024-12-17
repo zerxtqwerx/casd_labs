@@ -2,7 +2,7 @@
 
 namespace ConsoleApp1
 {
-    public interface MyIterator<T>
+    public interface MyIterator2<T>
     {
         bool HasNext();
         bool HasPrevious();
@@ -19,12 +19,13 @@ namespace ConsoleApp1
         void Add(T element);
     }
 
-    public class MyItr<T> : MyIterator<T>
+    public class MyItrArrayList<T> : MyIterator2<T>
     {
+        public event Action<MyArrayList<T>> OnDataChanged;
         private MyArrayList<T> list;
         private int cursor = -1;
 
-        public MyItr(MyArrayList<T> list)
+        public MyItrArrayList(MyArrayList<T> list)
         {
             this.list = list;
         }
@@ -76,6 +77,7 @@ namespace ConsoleApp1
             for (int i = cursor; i < list.Size() - 1; i++)
             {
                 list.Set(i, list.Get(i + 1));
+                OnDataChanged?.Invoke(list);
             }
             cursor--;
         }
@@ -86,6 +88,7 @@ namespace ConsoleApp1
                 throw new InvalidOperationException("Индекс вне массива.");
 
             list.Set(cursor, element);
+            OnDataChanged?.Invoke(list);
         }
 
         public void Add(T element)
@@ -96,7 +99,8 @@ namespace ConsoleApp1
             {
                 list.Set(i, list.Get(i - 1)); 
             }
-            list.Set(cursor + 1, element); 
+            list.Set(cursor + 1, element);
+            OnDataChanged?.Invoke(list);
             cursor++; 
         }
 

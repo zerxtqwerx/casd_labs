@@ -43,10 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyArrayList.cs" />
+    <Compile Include="1 group\MyArrayDeque.cs" />
+    <Compile Include="1 group\MyIterator1.cs" />
+    <Compile Include="2 group\MyVector.cs" />
+    <Compile Include="2 group\MyArrayList.cs" />
     <Compile Include="MyEnumerator.cs" />
-    <Compile Include="MyLinkedList.cs" />
-    <Compile Include="MyIterator.cs" />
+    <Compile Include="1 group\MyHashMap.cs" />
+    <Compile Include="1 group\MyHashSet.cs" />
+    <Compile Include="2 group\MyLinkedList.cs" />
+    <Compile Include="2 group\MyIterator2.cs" />
+    <Compile Include="1 group\MyPriorityQueue.cs" />
+    <Compile Include="1 group\MyTreeMap.cs" />
+    <Compile Include="1 group\MyTreeSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

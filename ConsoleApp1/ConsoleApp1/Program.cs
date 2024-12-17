@@ -6,27 +6,33 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
+            Console.WriteLine("1 группа:");
             MyArrayList<int> myArrayList = new MyArrayList<int>();
             myArrayList.Add(1);
             myArrayList.Add(2);
             myArrayList.Add(3);
 
-            MyIterator<int> iterator = myArrayList.Iterator();
+            MyIterator2<int> iterator = myArrayList.ListIterator();
 
             while (iterator.HasNext())
             {
                 int value = iterator.Next();
                 Console.WriteLine(value);
                 if (value == 2)
-                    iterator.Set(20); 
+                    iterator.Set(20);
             }
-
-            iterator = myArrayList.Iterator();
+            /*while (iterator.HasPrevious())
+                iterator.Previous();
+*/
             Console.WriteLine("После замены:");
+            iterator = myArrayList.ListIterator();
+            Console.WriteLine(iterator.Previous());
+
             while (iterator.HasNext())
             {
                 Console.WriteLine(iterator.Next());
             }
+            Console.Read();
         }
     }
 }
