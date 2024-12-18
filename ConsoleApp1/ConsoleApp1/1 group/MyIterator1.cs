@@ -4,7 +4,7 @@ namespace ConsoleApp1
 {
     public interface MyIterator1<T>
     {
-        MyItr1<T> MyItr1 { get; set; }
+        
 
         bool HasNext();
 
@@ -14,10 +14,6 @@ namespace ConsoleApp1
     }
     public interface IMyCollection1<T>
     {
-        MyArrayDeque<T> MyArrayDeque { get; set; }
-        MyHashSet<T> MyHashSet { get; set; }
-        MyPriorityQueue<T> MyPriorityQueue { get; set; }
-        MyTreeSet<T> MyTreeSet { get; set; }
 
         MyIterator1<T> Iterator();
     }

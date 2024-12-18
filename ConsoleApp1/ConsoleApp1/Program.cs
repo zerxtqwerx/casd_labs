@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ConsoleApp1
 {
@@ -6,6 +7,7 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
+            Console.OutputEncoding = Encoding.GetEncoding(1251);
             Console.WriteLine("1 группа:");
             MyArrayList<int> myArrayList = new MyArrayList<int>();
             myArrayList.Add(1);
