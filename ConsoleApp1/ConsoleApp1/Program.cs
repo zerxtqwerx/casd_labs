@@ -21,12 +21,9 @@ namespace ConsoleApp1
                 if (value == 2)
                     iterator.Set(20);
             }
-            /*while (iterator.HasPrevious())
-                iterator.Previous();
-*/
+
             Console.WriteLine("После замены:");
             iterator = myArrayList.ListIterator();
-            Console.WriteLine(iterator.Previous());
 
             while (iterator.HasNext())
             {

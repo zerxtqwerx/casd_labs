@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
@@ -19,13 +21,36 @@ namespace ConsoleApp1
         void Add(T element);
     }
 
-    public class MyItrArrayList<T> : MyIterator2<T>
+    public interface IMyCollection2<T>
     {
-        public event Action<MyArrayList<T>> OnDataChanged;
+        MyIterator2<T> ListIterator();
+        //int Size();
+    }
+
+    public class MyItr2<T> : MyIterator2<T>
+    {
+        /*private readonly IMyCollection2<T> collection;
+        private readonly Func<IMyCollection2<T>, T> getItemFunc;
+        private readonly Func<IMyCollection2<T>, bool> moveNextFunc;
+        private readonly Action<IMyCollection2<T>> resetFunc;
+
+        public MyItr2(IMyCollection2<T> collection,
+            Func<IMyCollection2<T>, T> getItemFunc,
+            Func<IMyCollection2<T>, bool> moveNextFunc,
+            Action<IMyCollection2<T>> resetFunc)
+        {
+            this.collection = collection;
+            this.getItemFunc = getItemFunc;
+            this.moveNextFunc = moveNextFunc;
+            this.resetFunc = resetFunc;
+        }*/
+        //public event Action<MyArrayList<T>> OnDataChanged;
         private MyArrayList<T> list;
+        //public T Current => getItemFunc(collection);
+        //object IEnumerator.Current => Current;
         private int cursor = -1;
 
-        public MyItrArrayList(MyArrayList<T> list)
+        public MyItr2(MyArrayList<T> list)
         {
             this.list = list;
         }
@@ -77,7 +102,7 @@ namespace ConsoleApp1
             for (int i = cursor; i < list.Size() - 1; i++)
             {
                 list.Set(i, list.Get(i + 1));
-                OnDataChanged?.Invoke(list);
+                //OnDataChanged?.Invoke(list);
             }
             cursor--;
         }
@@ -88,7 +113,7 @@ namespace ConsoleApp1
                 throw new InvalidOperationException("Индекс вне массива.");
 
             list.Set(cursor, element);
-            OnDataChanged?.Invoke(list);
+            //OnDataChanged?.Invoke(list);
         }
 
         public void Add(T element)
@@ -100,11 +125,19 @@ namespace ConsoleApp1
                 list.Set(i, list.Get(i - 1)); 
             }
             list.Set(cursor + 1, element);
-            OnDataChanged?.Invoke(list);
+            //OnDataChanged?.Invoke(list);
             cursor++; 
         }
+        /*public bool MoveNext()
+        {
+            return moveNextFunc(collection);
+        }
 
+        public void Reset()
+        {
+            resetFunc(collection);
+        }
 
+        public void Dispose() { }*/
     }
-
 }

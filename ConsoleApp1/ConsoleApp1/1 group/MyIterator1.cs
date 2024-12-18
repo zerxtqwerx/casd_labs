@@ -10,15 +10,19 @@ namespace ConsoleApp1
 
         void Remove();
     }
-
-    public class MyItrArrayList<T> : MyIterator1<T>
+    public interface IMyCollection1<T>
     {
-        private MyArrayList<T> list;
+        MyIterator1<T> Iterator();
+    }
+
+    public class MyItr1<T> : MyIterator1<T>
+    {
+        private MyArrayDeque<T> list;
         private int cursor = -1;
 
-        public MyItrArrayList(T[] list)
+        public MyItr1(MyArrayDeque<T> list)
         {
-            this.list = new MyArrayList<T>(list);
+            this.list =list;
         }
 
         public bool HasNext()
@@ -32,97 +36,14 @@ namespace ConsoleApp1
                 throw new InvalidOperationException("Нет следующего элемента.");
 
             cursor++;
-            return list.Get(cursor);
+            return list.Peek();
         }
 
         public void Remove()
         {
-            if (cursor < 0 || cursor >= list.Size())
-                throw new InvalidOperationException("Индекс вне массива.");
-
-
-            for (int i = cursor; i < list.Size() - 1; i++)
-            {
-                list.Set(i, list.Get(i + 1));
-            }
+            list.Poll();
             cursor--;
         }
     }
 
-    public class MyItrLinkedList<T> : MyIterator1<T>
-    {
-        private MyArrayList<T> list;
-        private int cursor = -1;
-
-        public MyItrLinkedList(T[] list)
-        {
-            this.list = new MyArrayList<T>(list);
-        }
-
-        public bool HasNext()
-        {
-            return cursor + 1 < list.Size();
-        }
-
-        public T Next()
-        {
-            if (!HasNext())
-                throw new InvalidOperationException("Нет следующего элемента.");
-
-            cursor++;
-            return list.Get(cursor);
-        }
-
-        public void Remove()
-        {
-            if (cursor < 0 || cursor >= list.Size())
-                throw new InvalidOperationException("Индекс вне массива.");
-
-
-            for (int i = cursor; i < list.Size() - 1; i++)
-            {
-                list.Set(i, list.Get(i + 1));
-            }
-            cursor--;
-        }
-    }
-
-
-    public class MyItrVector<T> : MyIterator1<T>
-    {
-        private MyArrayList<T> list;
-        private int cursor = -1;
-
-        public MyItrVector(T[] list)
-        {
-            this.list = new MyArrayList<T>(list);
-        }
-
-        public bool HasNext()
-        {
-            return cursor + 1 < list.Size();
-        }
-
-        public T Next()
-        {
-            if (!HasNext())
-                throw new InvalidOperationException("Нет следующего элемента.");
-
-            cursor++;
-            return list.Get(cursor);
-        }
-
-        public void Remove()
-        {
-            if (cursor < 0 || cursor >= list.Size())
-                throw new InvalidOperationException("Индекс вне массива.");
-
-
-            for (int i = cursor; i < list.Size() - 1; i++)
-            {
-                list.Set(i, list.Get(i + 1));
-            }
-            cursor--;
-        }
-    }
 }

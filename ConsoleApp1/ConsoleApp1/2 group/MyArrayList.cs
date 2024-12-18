@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace ConsoleApp1
 {
 
-    public class MyArrayList<T>
+    public class MyArrayList<T> : IMyCollection2<T>
     {
         private T[] elementData; //1
         private int size;        //2
@@ -132,11 +132,8 @@ namespace ConsoleApp1
                 }
             }
         }
-        //13
         public int Size()
-        {
-            return size;
-        }
+        { return size; }
 
         //14
         public T[] ToArray()
@@ -281,7 +278,12 @@ namespace ConsoleApp1
             return sublist;
         }
 
-        //Iterator
+        public MyIterator2<T> ListIterator()
+        {
+            return new MyItr2<T>(this);
+        }
+
+        /*//Iterator
         public MyIterator2<T> ListIterator()
         {
             return new MyItr2<T>(this);
@@ -300,19 +302,19 @@ namespace ConsoleApp1
             {
                 throw new Exception(Convert.ToString(e));
             }
-        }
+        }*/
 
 
-        //Action
-        public void Subscribe(MyItr2<T> instance)
-        {
-            instance.OnDataChanged += UpdateData;
-        }
-        private void UpdateData(MyArrayList<T> newData)
-        {
-            T[] newArray = newData.ToArray();
-            elementData = newArray;
-        }
+        /* //Action
+         public void Subscribe(MyItr2<T> instance)
+         {
+             instance.OnDataChanged += UpdateData;
+         }
+         private void UpdateData(MyArrayList<T> newData)
+         {
+             T[] newArray = newData.ToArray();
+             elementData = newArray;
+         }*/
     }
 
 }

@@ -2,7 +2,7 @@
 using System;
 using System.Xml;
 
-public class MyLinkedList<T>
+public class MyLinkedList<T> : IMyCollection2<T>
 {
     private Node<T> first;
     private Node<T> last;
@@ -441,9 +441,21 @@ public class MyLinkedList<T>
 
         catch { return false; }
     }
-    public MyIterator2<T> ListIterator()
+
+    private bool MoveNext(ref int index)
     {
-        return new MyItrLinkedList<T>(this);
+        if (index < size - 1)
+        {
+            index++;
+            return true;
+        }
+        return false;
+    }
+
+    private void Reset(ref int index) => index = -1;
+
+    public MyIterator2<T> ListIterator()
+    {   return new MyItr2<T>(this); //, (list) => list.Get, (list) => list.MoveNext, (list) => list.Reset);
     }
 
     public MyIterator2<T> ListIterator(int index)
@@ -458,6 +470,87 @@ public class MyLinkedList<T>
         catch (Exception e)
         {
             throw new Exception(Convert.ToString(e));
+        }
+    }
+    public class MyItr2<T> : MyIterator2<T>
+    {
+        private MyLinkedList<T> list;
+        private int cursor = -1;
+
+        public MyItr2(MyLinkedList<T> list)
+        {
+            this.list = list;
+        }
+
+        public bool HasNext()
+        {
+            return cursor + 1 < list.Size();
+        }
+
+        public T Next()
+        {
+            if (!HasNext())
+                throw new InvalidOperationException("Нет следующего элемента.");
+
+            cursor++;
+            return list.Get(cursor);
+        }
+
+        public bool HasPrevious()
+        {
+            return cursor > 0;
+        }
+
+        public T Previous()
+        {
+            if (!HasPrevious())
+                throw new InvalidOperationException("Нет предыдущего элемента.");
+
+            cursor--;
+            return list.Get(cursor);
+        }
+
+        public int NextIndex()
+        {
+            return cursor + 1;
+        }
+
+        public int PreviousIndex()
+        {
+            return cursor - 1;
+        }
+
+        public void Remove()
+        {
+            if (cursor < 0 || cursor >= list.Size())
+                throw new InvalidOperationException("Индекс вне массива.");
+
+
+            for (int i = cursor; i < list.Size() - 1; i++)
+            {
+                list.Set(i, list.Get(i + 1));
+            }
+            cursor--;
+        }
+
+        public void Set(T element)
+        {
+            if (cursor < 0 || cursor >= list.Size())
+                throw new InvalidOperationException("Индекс вне массива.");
+
+            list.Set(cursor, element);
+        }
+
+        public void Add(T element)
+        {
+
+            list.Add(default);
+            for (int i = list.Size() - 1; i > cursor; i--)
+            {
+                list.Set(i, list.Get(i - 1));
+            }
+            list.Set(cursor + 1, element);
+            cursor++;
         }
     }
 }

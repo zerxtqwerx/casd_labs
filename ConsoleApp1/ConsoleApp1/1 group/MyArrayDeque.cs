@@ -1,7 +1,7 @@
 ﻿using ConsoleApp1;
 using System;
 
-public class MyArrayDeque<T>
+public class MyArrayDeque<T> : IMyCollection1<T>
 {
     private T[] elements;
     private int head;
@@ -337,7 +337,6 @@ public class MyArrayDeque<T>
     }
     public MyIterator1<T> Iterator()
     {
-        T[] newArray = this.ToArray();
-        return new MyItr1<T>(newArray);
+        return new MyItr1<T>(this);
     }
 }

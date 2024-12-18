@@ -262,8 +262,38 @@ public class MyPriorityQueue<T>
     }
     public MyIterator1<T> Iterator()
     {
-        T[] newArray = this.ToArray();
-        return new MyItr1<T>(newArray);
+        return new MyItr1<T>(this);
+    }
+
+    public class MyItr1<T> : MyIterator1<T>
+    {
+        private MyPriorityQueue<T> list;
+        private int cursor = -1;
+
+        public MyItr1(MyPriorityQueue<T> list)
+        {
+            this.list = list;
+        }
+
+        public bool HasNext()
+        {
+            return cursor + 1 < list.Size();
+        }
+
+        public T Next()
+        {
+            if (!HasNext())
+                throw new InvalidOperationException("Нет следующего элемента.");
+
+            cursor++;
+            return list.Peek();
+        }
+
+        public void Remove()
+        {
+            list.Poll();
+            cursor--;
+        }
     }
 }
 

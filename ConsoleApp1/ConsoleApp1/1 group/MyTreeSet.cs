@@ -365,8 +365,38 @@ namespace ConsoleApp1
         }
         public MyIterator1<E> Iterator()
         {
-            E[] newArray = this.ToArray();
-            return new MyItr1<E>(newArray);
+            return new MyItr1<E>(this);
+        }
+
+        public class MyItr1<T> : MyIterator1<T>
+        {
+            private MyTreeSet<T> list;
+            private int cursor = -1;
+
+            public MyItr1(MyTreeSet<T> list)
+            {
+                this.list = list;
+            }
+
+            public bool HasNext()
+            {
+                return cursor + 1 < list.Size();
+            }
+
+            public T Next()
+            {
+                if (!HasNext())
+                    throw new InvalidOperationException("Нет следующего элемента.");
+
+                cursor++;
+                return list.First();
+            }
+
+            public void Remove()
+            {
+                list.Remove(list.First());
+                cursor--;
+            }
         }
     }
 }
