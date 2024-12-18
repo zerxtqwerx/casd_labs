@@ -6,6 +6,8 @@ namespace ConsoleApp1
 {
     public interface MyIterator2<T>
     {
+        MyItr2<T> MyItr2 { get; set; }
+
         bool HasNext();
         bool HasPrevious();
 
@@ -23,6 +25,10 @@ namespace ConsoleApp1
 
     public interface IMyCollection2<T>
     {
+        MyLinkedList<T> MyLinkedList { get; set; }
+        MyVector<T> MyVector { get; set; }
+        MyArrayList<T> MyArrayList { get; set; }
+
         MyIterator2<T> ListIterator();
         //int Size();
     }
@@ -53,6 +59,14 @@ namespace ConsoleApp1
         public MyItr2(MyArrayList<T> list)
         {
             this.list = list;
+        }
+
+        public IMyCollection2<T> IMyCollection2
+        {
+            get => default;
+            set
+            {
+            }
         }
 
         public bool HasNext()

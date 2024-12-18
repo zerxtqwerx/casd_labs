@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\myenumerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myenumerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -43,12 +51,8 @@
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\2 group\\myarraylist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\2 group\\myiterator2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|D:\\GitDesc\\casd_labs\\ConsoleApp1\\consoleapp1\\2 group\\myiterator2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\2 group\\myiterator2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|d:\\gitdesc\\casd_labs\\consoleapp1\\consoleapp1\\myenumerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EDF849C-5047-4770-8778-0DE0274F706A}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\myenumerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,11 +62,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 0,
+              "Title": "ClassDiagram1.cd",
+              "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\ClassDiagram1.cd",
+              "RelativeDocumentMoniker": "ConsoleApp1\\ClassDiagram1.cd",
+              "ToolTip": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\ClassDiagram1.cd",
+              "RelativeToolTip": "ConsoleApp1\\ClassDiagram1.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2024-12-18T03:35:15.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MyEnumerator.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\MyEnumerator.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\MyEnumerator.cs",
@@ -75,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MyTreeSet.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\1 group\\MyTreeSet.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\1 group\\MyTreeSet.cs",
@@ -88,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "MyPriorityQueue.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\1 group\\MyPriorityQueue.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\1 group\\MyPriorityQueue.cs",
@@ -101,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MyHashSet.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\1 group\\MyHashSet.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\1 group\\MyHashSet.cs",
@@ -114,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "MyHashMap.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\1 group\\MyHashMap.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\1 group\\MyHashMap.cs",
@@ -127,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "MyArrayDeque.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\1 group\\MyArrayDeque.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\1 group\\MyArrayDeque.cs",
@@ -140,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "MyIterator1.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\1 group\\MyIterator1.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\1 group\\MyIterator1.cs",
@@ -153,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "MyVector.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\2 group\\MyVector.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\2 group\\MyVector.cs",
@@ -166,7 +182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "MyArrayList.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\2 group\\MyArrayList.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\2 group\\MyArrayList.cs",
@@ -179,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "MyLinkedList.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\2 group\\MyLinkedList.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\2 group\\MyLinkedList.cs",
@@ -192,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "MyIterator2.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\2 group\\MyIterator2.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\2 group\\MyIterator2.cs",
@@ -205,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\GitDesc\\casd_labs\\ConsoleApp1\\ConsoleApp1\\Program.cs",
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",

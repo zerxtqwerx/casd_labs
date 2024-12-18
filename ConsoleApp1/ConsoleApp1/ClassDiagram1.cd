@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsoleApp1.MyItr1&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAgAAAAAAAAEAAAAABAAAAAAwAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>1 group\MyIterator1.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IMyCollection1" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MyArrayDeque&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJIADJggAQUiBCAAIgAJAAAAhCQCAkAKBAAAQBRCgA=</HashCode>
+      <FileName>1 group\MyArrayDeque.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyHashSet&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAECAAAAQAgQAAAgAABBAAAgAAAAUAIBACAABQAAA=</HashCode>
+      <FileName>1 group\MyHashSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyPriorityQueue&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAACAAAAQUgAABAIhABAAAAQABCAEAKBBAgAFQgAA=</HashCode>
+      <FileName>1 group\MyPriorityQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.MyTreeSet&lt;E&gt;" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAACABABQAgRgAEAAABBAAEBAAAAUEIhBCAEBQAQA=</HashCode>
+      <FileName>1 group\MyTreeSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsoleApp1.MyItr2&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAAgAAAAAABgEAAAAABAAAAAAQAAAAACAABAAAQAA=</HashCode>
+      <FileName>2 group\MyIterator2.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IMyCollection2" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConsoleApp1.MyArrayList&lt;T&gt;" Collapsed="true">
+    <Position X="10.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEJAAAAgAAQQjABEAIAAFAAAAAAAAAEAIBAAAAFQAAA=</HashCode>
+      <FileName>2 group\MyArrayList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyLinkedList&lt;T&gt;" Collapsed="true">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="MyLinkedList&lt;T&gt;.Node&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>2 group\MyLinkedList.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="MyLinkedList&lt;T&gt;.MyItr2&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>2 group\MyLinkedList.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEJIADIAAAQUjADAAIkANAAAAhCQCAkAIBAAAQBRCgA=</HashCode>
+      <FileName>2 group\MyLinkedList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsoleApp1.MyVector&lt;T&gt;" Collapsed="true">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEJAAAAgBAQQjBBEAAAAFAAAAAQAAAEEIBACAQVQQAA=</HashCode>
+      <FileName>2 group\MyVector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ConsoleApp1.MyIterator1&lt;T&gt;">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAABAAAAAAQAAAABAAAAAAAAAA=</HashCode>
+      <FileName>1 group\MyIterator1.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MyItr1" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="ConsoleApp1.IMyCollection1&lt;T&gt;">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAMAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAA=</HashCode>
+      <FileName>1 group\MyIterator1.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MyArrayDeque" />
+      <Property Name="MyHashSet" />
+      <Property Name="MyPriorityQueue" />
+      <Property Name="MyTreeSet" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="ConsoleApp1.MyIterator2&lt;T&gt;">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAAAAAAAAABgAAAAAABAAAAAAQAAAABCAABAAAAAA=</HashCode>
+      <FileName>2 group\MyIterator2.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MyItr2" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="ConsoleApp1.IMyCollection2&lt;T&gt;">
+    <Position X="10.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAkAAAAAAAAAAA=</HashCode>
+      <FileName>2 group\MyIterator2.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MyLinkedList" />
+      <Property Name="MyVector" />
+      <Property Name="MyArrayList" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
