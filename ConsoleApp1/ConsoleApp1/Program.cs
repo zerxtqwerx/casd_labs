@@ -5,6 +5,7 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        //
         public interface MyCollection<T>
         {
             void Add(T e);
