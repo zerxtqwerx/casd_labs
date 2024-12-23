@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ConsoleApp1;
 
-public class MyHashMap<K, V>
+public class MyHashMap<K, V> : MyMap<K, V>
 {
     private class Entry
     {
@@ -45,12 +45,12 @@ public class MyHashMap<K, V>
     }
 
 
-    public bool ContainsKey(K key)
+    public bool ContainsKey(object key)
     {
         return GetEntry(key) != null;
     }
 
-    public bool ContainsValue(V value)
+    public bool ContainsValue(object value)
     {
         foreach (var entry in table)
         {
@@ -131,7 +131,7 @@ public class MyHashMap<K, V>
         size++;
     }
 
-    public V Remove(K key)
+    public void Remove(K key)
     {
         int index = GetBucketIndex(key);
         Entry current = table[index];
@@ -150,12 +150,10 @@ public class MyHashMap<K, V>
                     previous.Next = current.Next;
                 }
                 size--;
-                return current.Value;
             }
             previous = current;
             current = current.Next;
         }
-        return default(V);
     }
 
     public int Size()
@@ -163,13 +161,13 @@ public class MyHashMap<K, V>
         return size;
     }
 
-    private int GetBucketIndex(K key)
+    private int GetBucketIndex(object key)
     {
         int hashCode = key.GetHashCode();
         return (hashCode & 0x7FFFFFFF) % table.Length;
     }
 
-    private Entry GetEntry(K key)
+    private Entry GetEntry(object key)
     {
         int index = GetBucketIndex(key);
         Entry current = table[index];

@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
-
-    public class MyArrayList<T> : IMyCollection2<T>
+    public class MyArrayList<T> : IMyCollection2<T>, MyList<T>
     {
         private T[] elementData; //1
         private int size;        //2
@@ -99,17 +98,15 @@ namespace ConsoleApp1
         }
 
         //10
-        public bool Remove(T o)
+        public void Remove(object o)
         {
             for (int i = 0; i < size; i++)
             {
                 if (Equals(elementData[i], o))
                 {
                     Remove(i);
-                    return true;
                 }
             }
-            return false;
         }
 
         //11
@@ -199,7 +196,7 @@ namespace ConsoleApp1
         }
 
         //19
-        public int IndexOf(T o)
+        public int IndexOf(object o)
         {
             for (int i = 0; i < size; i++)
             {
@@ -212,7 +209,7 @@ namespace ConsoleApp1
         }
 
         //20
-        public int LastIndexOf(T o)
+        public int LastIndexOf(object o)
         {
             for (int i = size - 1; i >= 0; i--)
             {
@@ -224,7 +221,7 @@ namespace ConsoleApp1
             return -1;
         }
         //21
-        public T Remove(int index)
+        public void Remove(int index)
         {
             if (index < 0 || index >= size)
             {
@@ -237,9 +234,7 @@ namespace ConsoleApp1
             }
             elementData[size - 1] = default(T);
             size--;
-            return removedElement;
         }
-
         //22
         public T Set(int index, T e)
         {
@@ -278,12 +273,8 @@ namespace ConsoleApp1
             return sublist;
         }
 
-        public MyIterator2<T> ListIterator()
-        {
-            return new MyItr2<T>(this);
-        }
-
-        /*//Iterator
+        
+        //Iterator
         public MyIterator2<T> ListIterator()
         {
             return new MyItr2<T>(this);
@@ -302,19 +293,7 @@ namespace ConsoleApp1
             {
                 throw new Exception(Convert.ToString(e));
             }
-        }*/
-
-
-        /* //Action
-         public void Subscribe(MyItr2<T> instance)
-         {
-             instance.OnDataChanged += UpdateData;
-         }
-         private void UpdateData(MyArrayList<T> newData)
-         {
-             T[] newArray = newData.ToArray();
-             elementData = newArray;
-         }*/
+        }
     }
 
 }

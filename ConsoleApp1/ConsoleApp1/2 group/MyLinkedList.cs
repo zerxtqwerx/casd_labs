@@ -2,7 +2,7 @@
 using System;
 using System.Xml;
 
-public class MyLinkedList<T> : IMyCollection2<T>
+public class MyLinkedList<T> : IMyCollection2<T>, MyList<T>
 {
     private Node<T> first;
     private Node<T> last;
@@ -106,7 +106,7 @@ public class MyLinkedList<T> : IMyCollection2<T>
         return size == 0;
     }
     //9
-    public bool Remove(object o)
+    public void Remove(object o)
     {
         Node<T> node = first;
         bool flag = false;
@@ -138,9 +138,6 @@ public class MyLinkedList<T> : IMyCollection2<T>
                 }
             }
         }
-        if (flag)
-            return true;
-        return false;
     }
     //10
     public void RemoveAll(T[] a)
@@ -264,15 +261,14 @@ public class MyLinkedList<T> : IMyCollection2<T>
     }
 
     //20 
-    public T Remove(int index)
+    public void Remove(int index)
     {
         T t = Get(index);
         Remove(t);
-        return t;
     }
 
     //21
-    public void Set(int index, T e)
+    public T Set(int index, T e)
     {
         Node<T> node = first;
         for (int i = 0; i < size; i++)
@@ -284,6 +280,7 @@ public class MyLinkedList<T> : IMyCollection2<T>
             }
             node = node.Next;
         }
+        return node.Value;
     }
 
     //22
@@ -418,7 +415,7 @@ public class MyLinkedList<T> : IMyCollection2<T>
         return Poll();
     }
     //41
-    public bool RemoveLastOccurrence(object obj)
+    public bool RemoveLastOccurrence(T obj)
     {
         try
         {
@@ -430,7 +427,7 @@ public class MyLinkedList<T> : IMyCollection2<T>
         catch { return false; }
     }
     //42
-    public bool RemoveFirstOccurrence(object obj)
+    public bool RemoveFirstOccurrence(T obj)
     {
         try
         {

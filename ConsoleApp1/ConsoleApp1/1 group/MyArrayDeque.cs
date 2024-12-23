@@ -1,7 +1,7 @@
 ﻿using ConsoleApp1;
 using System;
 
-public class MyArrayDeque<T> : IMyCollection1<T>
+public class MyArrayDeque<T> : IMyCollection1<T>, MyDeque<T>
 {
     private T[] elements;
     private int head;
@@ -88,7 +88,7 @@ public class MyArrayDeque<T> : IMyCollection1<T>
         return size == 0;
     }
     //10
-    public bool Remove(object o)
+    public void Remove(object o)
     {
         for (int i = 0; i < size; i++)
         {
@@ -96,10 +96,9 @@ public class MyArrayDeque<T> : IMyCollection1<T>
             if (elements[index]?.Equals(o) == true)
             {
                 RemoveAt(index);
-                return true;
+               
             }
         }
-        return false;
     }
     //11
     public void RemoveAll(T[] a)

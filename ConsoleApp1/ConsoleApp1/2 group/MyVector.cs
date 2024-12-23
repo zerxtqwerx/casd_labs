@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
 
-    public class MyVector<T> : IEnumerable<T>
+    public class MyVector<T> : IEnumerable<T>, MyList<T>
     {
         private T[] elementData;        //1
         private int elementCount;       //2

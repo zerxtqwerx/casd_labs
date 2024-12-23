@@ -5,7 +5,7 @@ using System.Collections;
 namespace ConsoleApp1
 {
 
-    public class MyTreeMap<K, V> : IEnumerable<KeyValuePair<K, V>>
+    public class MyTreeMap<K, V> : IEnumerable<KeyValuePair<K, V>>, MyNavigableMap<K, V>
     {
         private class Node
         {

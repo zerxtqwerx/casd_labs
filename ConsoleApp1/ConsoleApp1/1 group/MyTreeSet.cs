@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ConsoleApp1
 {
-    public class MyTreeSet<E> : IEnumerable<E>
+    public class MyTreeSet<E> : IEnumerable<E>, MyNavigableSet<E>
     {
         private MyTreeMap<E, object> m;
         private static readonly object PRESENT = new object();

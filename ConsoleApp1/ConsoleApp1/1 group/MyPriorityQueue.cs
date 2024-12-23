@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ConsoleApp1;
 
-public class MyPriorityQueue<T>
+public class MyPriorityQueue<T>: MyQueue<T>
 {
     private T[] queue;
     private int size;
@@ -152,7 +152,7 @@ public class MyPriorityQueue<T>
     public bool IsEmpty() => size == 0;
 
     //12
-    public bool Remove(object o)
+    public void Remove(object o)
     {
         if (o is T item)
         {
@@ -161,11 +161,9 @@ public class MyPriorityQueue<T>
                 if (queue[i].Equals(item))
                 {
                     RemoveAt(i);
-                    return true;
                 }
             }
         }
-        return false;
     }
 
     private void RemoveAt(int index)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ConsoleApp1;
 
-public class MyHashSet<T>
+public class MyHashSet<T> : MySet<T>
 {
     private MyHashMap<T, object> map;
     private static readonly object DummyValue = new object();
@@ -78,15 +78,14 @@ public class MyHashSet<T>
         return map.Size() == 0;
     }
     //11
-    public bool Remove(object o)
+    public void Remove(object o)
     {
         if (o == null) throw new ArgumentNullException(nameof(o));
         try
         {
             map.Remove((T)o);
-            return true;
         }
-        catch { return false; }
+        catch { }
     }
     //12
     public void RemoveAll(T[] array)

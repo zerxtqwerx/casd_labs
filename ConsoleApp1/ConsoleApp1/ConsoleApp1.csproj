@@ -47,6 +47,7 @@
     <Compile Include="1 group\MyIterator1.cs" />
     <Compile Include="2 group\MyVector.cs" />
     <Compile Include="2 group\MyArrayList.cs" />
+    <Compile Include="Interfaces.cs" />
     <Compile Include="MyEnumerator.cs" />
     <Compile Include="1 group\MyHashMap.cs" />
     <Compile Include="1 group\MyHashSet.cs" />
